@@ -59,7 +59,7 @@ import br.com.fiap.moneyback.screens.CadastroMentores
 import br.com.fiap.moneyback.screens.LoginScreen
 import br.com.fiap.moneyback.screens.MenuScreen
 //import br.com.fiap.moneyback.screens.PerFertilScreen
-import br.com.fiap.moneyback.screens.PerfilMentor
+//import br.com.fiap.moneyback.screens.PerfilMentor
 import br.com.fiap.moneyback.screens.PesquisaMentores
 import br.com.fiap.moneyback.ui.theme.MoneyBackTheme
 
