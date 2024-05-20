@@ -40,11 +40,13 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
     Spacer(modifier = Modifier.height(10.dp))
 
             Column (
+                modifier = Modifier.padding(24.dp),
+
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.White)
+                //modifier = Modifier
+                //    .fillMaxWidth()
+                //.background(Color.White)
 
             ){
 
@@ -56,12 +58,13 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                     Text(
                         text = "Mentoria Acadêmica",
                         fontSize = 25.sp,
-                        color = Color.Gray,
+                        color = Color(color = 0xFF96A3EC),
                         textAlign = TextAlign.Justify
                     )
 
 
                     /*
+                    //
                     // imagem
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -86,22 +89,49 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
 
 
 
-                //Botão "Cadastros"
+                //Botão "Cadastro de perfil"
+
+                // Se Opt = Mentor só mostra o botão de cadastro do mentor
+                if (pOptMentorAluno == "M") {
+
                 Button(
                     onClick = {
-                        navController.navigate("cadastro/$pOptMentorAluno")
+                        //navController.navigate("cadmentor/$pOptMentorAluno")
+                        navController.navigate("cadmentor")
                     },
                     colors = ButtonDefaults.buttonColors(Color.Gray),
                     modifier = Modifier.size(width = 250.dp, height = 48.dp)
                 ) {
                     Text(
-                        text = "Cadastro",
+                        text = "Cadastro de Perfil",
                         fontSize = 15.sp,
                         color = Color.Black
                     )
                 }
 
+                //} else if (pOptMentorAluno == "A") {
+                } else  {
 
+                    Button(
+                        onClick = {
+                            //navController.navigate("cadaluno/$pOptMentorAluno")
+                            navController.navigate("cadaluno")
+                        },
+                        colors = ButtonDefaults.buttonColors(Color.Gray),
+                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
+                    ) {
+                        Text(
+                            text = "Cadastro de Perfil",
+                            fontSize = 15.sp,
+                            color = Color.Black
+                        )
+                    }
+
+                }
+
+
+/*
+                //
                 //Botão "Exemplo Games"
                 Button(
                     onClick = {
@@ -117,23 +147,62 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                         color = Color.Black
                     )
                 }
-
+ */
 
                 //Botão "Pesquisa Mentores"
+
+                // Se Opt = Mentor só mostra o botão de cadastro do mentor
+                if (pOptMentorAluno == "M") {
+
                 Button(
                     onClick = {
-                        navController.navigate("pesquisamentor/$pOptMentorAluno")
+                        //navController.navigate("pesquisamentor/$pOptMentorAluno")
+                        navController.navigate("pesquisamentor")
                     },
                     colors = ButtonDefaults.buttonColors(Color.Gray),
                     modifier = Modifier.size(width = 250.dp, height = 48.dp)
                 ) {
                     Text(
-                        text = "Pesquisa Mentores",
+                        text = "Pesquisa Avançada",
                         fontSize = 15.sp,
                         color = Color.Black
                     )
                 }
 
+                } else  {
+
+                    Button(
+                        onClick = {
+                            //navController.navigate("pesquisaaluno/$pOptMentorAluno")
+                            navController.navigate("pesquisaaluno")
+                        },
+                        colors = ButtonDefaults.buttonColors(Color.Gray),
+                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
+                    ) {
+                        Text(
+                            text = "Pesquisa Avançada",
+                            fontSize = 15.sp,
+                            color = Color.Black
+                        )
+                    }
+
+                }
+
+
+                //Botão "Relacionamento Mentores x Alunos"
+                Button(
+                    onClick = {
+                        navController.navigate("relmentoraluno/$pOptMentorAluno")
+                    },
+                    colors = ButtonDefaults.buttonColors(Color.Gray),
+                    modifier = Modifier.size(width = 250.dp, height = 48.dp)
+                ) {
+                    Text(
+                        text = "Conexões identificadas",
+                        fontSize = 15.sp,
+                        color = Color.Black
+                    )
+                }
 
 
                 /*
@@ -215,7 +284,7 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                 Row(
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
-                        .background(Color.White)
+                        //.background(Color.White)
                         .fillMaxWidth()
                         .height(70.dp)
                 ) {

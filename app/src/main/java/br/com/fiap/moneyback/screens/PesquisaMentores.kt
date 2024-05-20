@@ -218,30 +218,92 @@ fun ContatoForm1(
         )
         Spacer(modifier = Modifier.height(2.dp))
 
-        // ####################### \\
-        // ####### CAMPOS ######## \\
-        // ####################### \\
-        OutlinedTextField(
-            value = studioState,
-            onValueChange = { studioState = it},
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Nome" ) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words),
-            trailingIcon = {
-                IconButton(onClick = {
 
-                    //listGamesByStudio = getGamesByStudio(studioState)
-                    //atualizar = {listaContatosState.value = contatoRepository.listarContatos() }
-                    //atualizar = {listaContatosState.value = contatoRepository.listarContatos().filter { it.nome.startsWith(prefix = studioState, ignoreCase = true) }
+                // ####################### \\
+                // ####### CAMPOS ######## \\
+                // ####################### \\
+                OutlinedTextField(
+                    value = studioState,
+                    onValueChange = { studioState = it
+                                        contatoRepository.buscarRelMentorAluno(studioState)},
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text(text = "Área Atuação" ) },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
+                        capitalization = KeyboardCapitalization.Words),
+                    trailingIcon = {
+                        IconButton(onClick = {
 
-                }) {
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = ""
-                    )
-                }
-            }
-        )
+                            contatoRepository.buscarRelMentorAluno(studioState)
+                            atualizar()
+
+                            /*
+                            //atualizar = {
+                            //    //listaContatosState.value = contatoRepository.buscarRelMentorAluno()
+                            //    listaContatosState.value = contatoRepository.buscarRelMentorAluno(studioState)
+                            //}
+
+                            //val context = LocalContext.current
+                            //val contatoRepository = ContatoRepository(context)
+
+                            //val contatoRepository = ContatoRepository(context = context)
+                            //contatoRepository.excluir(contato = contato)
+                            //contatoRepository.buscarRelMentorAluno()
+                             */
+
+                        }) {
+                            Icon(imageVector = Icons.Default.Search,
+                                contentDescription = ""
+                            )
+                        }
+                    }
+                )
+
+
+                OutlinedTextField(
+                    value = studioState,
+                    onValueChange = { studioState = it
+                        contatoRepository.buscarRelMentorAluno(studioState)},
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text(text = "Especialidade" ) },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
+                        capitalization = KeyboardCapitalization.Words),
+                    trailingIcon = {
+                        IconButton(onClick = {
+
+                            contatoRepository.buscarRelMentorAluno(studioState)
+                            atualizar()
+
+                        }) {
+                            Icon(imageVector = Icons.Default.Search,
+                                contentDescription = ""
+                            )
+                        }
+                    }
+                )
+
+
+
+                OutlinedTextField(
+                    value = studioState,
+                    onValueChange = { studioState = it
+                        contatoRepository.buscarRelMentorAluno(studioState)},
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text(text = "Disponibilidade" ) },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
+                        capitalization = KeyboardCapitalization.Words),
+                    trailingIcon = {
+                        IconButton(onClick = {
+
+                            contatoRepository.buscarRelMentorAluno(studioState)
+                            atualizar()
+
+                        }) {
+                            Icon(imageVector = Icons.Default.Search,
+                                contentDescription = ""
+                            )
+                        }
+                    }
+                )
 
         //Spacer(modifier = Modifier.height(2.dp))
 

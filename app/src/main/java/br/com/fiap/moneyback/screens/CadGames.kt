@@ -62,7 +62,7 @@ fun CadGames(navController: NavController) {
             value = studioState,
             onValueChange = {
                 studioState = it
-                listGamesByStudio = getGamesByStudio(studioState)
+                //listGamesByStudio = getGamesByStudio(studioState)
             },
             modifier = Modifier.fillMaxWidth(),
             label = {
@@ -71,7 +71,7 @@ fun CadGames(navController: NavController) {
             },
             trailingIcon = {
                 IconButton(onClick = {
-                    listGamesByStudio = getGamesByStudio(studioState)
+                      listGamesByStudio = getGamesByStudio(studioState)
                 }) {
                     Icon(imageVector = Icons.Default.Search,
                         contentDescription = ""

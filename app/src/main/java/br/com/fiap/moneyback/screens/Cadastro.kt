@@ -26,6 +26,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.fiap.moneyback.R
 
+
+//pode tirar do projeto
+
+
 @Composable
 fun Cadastro(navController: NavController, pOptMentorAluno: String) {
     /*Box(modifier = Modifier

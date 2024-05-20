@@ -65,7 +65,7 @@ fun LoginScreen(navController: NavController) {
     }
 
     var OptMentorAluno by remember {
-        mutableStateOf(-1)
+        mutableStateOf(1) // -1
     }
 
 
@@ -76,7 +76,7 @@ fun LoginScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.White)
+            .background(Color.Black)
 
     ) {
 
@@ -92,7 +92,7 @@ fun LoginScreen(navController: NavController) {
             Text(
                 text = "Mentoria Acadêmica",
                 fontSize = 30.sp,
-                color = Color.Gray,
+                color = Color(color = 0xFF96A3EC),
                 textAlign = TextAlign.Justify
             )
         }
@@ -104,22 +104,24 @@ fun LoginScreen(navController: NavController) {
             modifier = Modifier
                 .padding(32.dp)
                 .fillMaxWidth()
-                .background(Color.White)
+                .background(Color.Black)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.chapeuformando), // coracao
+                painter = painterResource(id = R.drawable.chapeuformandopreto), // coracao
                 contentDescription = "chapeuformando",//"coracao",
-                modifier = Modifier.size(200.dp),
+                modifier = Modifier.size(300.dp),
             )
 
         }
 
 
-        // Espaço
-        Spacer(modifier = Modifier.height(20.dp))
+
+        //Spacer(modifier = Modifier.height(5.dp))
 
 
-        // Campo Login
+        // ############################ \\
+        // ####### CAMPO LOGIN ######## \\
+        // ############################ \\
         OutlinedTextField(
             modifier = Modifier.width(300.dp),
 
@@ -144,10 +146,11 @@ fun LoginScreen(navController: NavController) {
             isError = erroLogin
         )
 
-        // Espaço
         Spacer(modifier = Modifier.height(25.dp))
 
-        // Campo Password
+        // ############################### \\
+        // ####### CAMPO PASSWORD ######## \\
+        // ############################### \\
         OutlinedTextField(
             //modifier = Modifier.fillMaxWidth(),
             modifier = Modifier.width(300.dp),
@@ -170,40 +173,48 @@ fun LoginScreen(navController: NavController) {
         )
 
 
-   // }  /// teste
+
+
 
 
 
         // Espaço
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Radio button Mentor
+        // ############################ \\
+        // ####### RADIO ALUNO ######## \\
+        // ############################ \\
+        Row(verticalAlignment = Alignment.CenterVertically){
+            RadioButton(
+                selected = OptMentorAluno == 1,
+                onClick = { OptMentorAluno = 1 },
+                colors = RadioButtonDefaults.colors(
+                    selectedColor = Color.White,
+                    unselectedColor = Color.Gray
+                )
+
+            )
+            Text(text = "Aluno  ")
+        }
+
+
+
+        // ############################# \\
+        // ####### RADIO MENTOR ######## \\
+        // ############################# \\
         Row(verticalAlignment = Alignment.CenterVertically,    ){
             RadioButton(
                 selected = OptMentorAluno == 0,
                 onClick = { OptMentorAluno = 0 },
                 colors = RadioButtonDefaults.colors(
-                    selectedColor = Color.Black,
+                    selectedColor = Color.White,
                     unselectedColor = Color.Gray
                 )
             )
             Text(text = "Mentor")
         }
 
-        // Radio button Aluno
-        Row(verticalAlignment = Alignment.CenterVertically){
-            RadioButton(
-                selected = OptMentorAluno == 1,
-                onClick = { OptMentorAluno = 1 },
-                colors = RadioButtonDefaults.colors(
-                    selectedColor = Color.Black,
-                    unselectedColor = Color.Gray
-                )
-
-            )
-            Text(text = "Aluno")
-        }
-
+        /*
         // Radio button Ambos
         Row(verticalAlignment = Alignment.CenterVertically){
             RadioButton(
@@ -217,6 +228,13 @@ fun LoginScreen(navController: NavController) {
             )
             Text(text = "Ambos")
         }
+        */
+
+
+
+
+
+
 
 
 
@@ -233,7 +251,7 @@ fun LoginScreen(navController: NavController) {
             Row(
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .background(Color.White)
+                    .background(Color.Black)
                     .fillMaxWidth()
                     .height(70.dp)
             ) {
@@ -271,7 +289,7 @@ fun LoginScreen(navController: NavController) {
 
 
 
-            /*
+            /* ##### ANTIGO
             // parte inferior
             Row(
                 horizontalArrangement = Arrangement.Center,

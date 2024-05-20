@@ -1,66 +1,26 @@
 package br.com.fiap.moneyback
 
-
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-//import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
-//import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
-//import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardCapitalization
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import br.com.fiap.moneyback.database.repository.ContatoRepository
-import br.com.fiap.moneyback.model.Contato
 import br.com.fiap.moneyback.screens.CadGames
-//import br.com.fiap.moneyback.screens.BebaAguaScreen
 import br.com.fiap.moneyback.screens.Cadastro
 import br.com.fiap.moneyback.screens.CadastroAlunos
 import br.com.fiap.moneyback.screens.CadastroMentores
-//import br.com.fiap.moneyback.screens.GamesScreen
 import br.com.fiap.moneyback.screens.LoginScreen
 import br.com.fiap.moneyback.screens.MenuScreen
-//import br.com.fiap.moneyback.screens.PerFertilScreen
-//import br.com.fiap.moneyback.screens.PerfilMentor
+import br.com.fiap.moneyback.screens.PesquisaAlunos
 import br.com.fiap.moneyback.screens.PesquisaMentores
+import br.com.fiap.moneyback.screens.RelMentorAluno
 import br.com.fiap.moneyback.ui.theme.MoneyBackTheme
 
 class  MainActivity : ComponentActivity() {
@@ -84,34 +44,8 @@ class  MainActivity : ComponentActivity() {
                         startDestination = "login"
                     ) {
 
-
-
-
-
                         composable(route = "login") {
                             LoginScreen(navController)
-                        }
-
-                        composable(route = "cadastro/{OptMentorAluno}") {
-                            val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
-                            Cadastro(navController, OptMentorAluno!!)
-                        }
-
-                        /*
-                        composable(route = "perfilmentor/{OptMentorAluno}") {
-                            val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
-                            PerfilMentor(navController, OptMentorAluno!!)
-                       */
-
-                        composable(route = "cadgames") {
-                            CadGames(navController)
-                        }
-
-
-                        composable(route = "pesquisamentor/{OptMentorAluno}") {
-                            val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
-                            PesquisaMentores(navController)
-
                         }
 
                         composable(route = "menu/{OptMentorAluno}" ) {
@@ -127,6 +61,40 @@ class  MainActivity : ComponentActivity() {
                             CadastroAlunos(navController)
                         }
 
+                        //composable(route = "pesquisamentor/{OptMentorAluno}") {
+                        composable(route = "pesquisamentor") {
+                            //val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
+                            PesquisaMentores(navController)
+                            //    }
+                        }
+
+                        composable(route = "pesquisaaluno") {
+                            //val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
+                            PesquisaAlunos(navController)
+                        }
+
+                        composable(route = "relmentoraluno/{OptMentorAluno}") {
+                            val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
+                            RelMentorAluno(navController)
+                        }
+
+                        /*
+                        composable(route = "cadastro/{OptMentorAluno}") {
+                            val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
+                            Cadastro(navController, OptMentorAluno!!)
+                        }
+                        */
+                        /*
+                        composable(route = "perfilmentor/{OptMentorAluno}") {
+                            val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
+                            PerfilMentor(navController, OptMentorAluno!!)
+                       */
+
+                        /*
+                        composable(route = "cadgames") {
+                            CadGames(navController)
+                        }
+                        */
 
                     }
 

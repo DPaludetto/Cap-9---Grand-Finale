@@ -21,12 +21,21 @@ class ContatoRepository(context: Context) {
         return db.excluir(contato = contato)
     }
 
-    fun buscarMentorPeloId(id: Int): Contato {
-        return db.buscarMentorPeloId(id = id)
-    }
+    //fun buscarMentorPeloId(id: Int): Contato {
+    //    return db.buscarMentorPeloId(id = id)
+    //}
 
     fun listarContatos(): List<Contato> {
         return db.listarContatos()
+    }
+
+
+    //fun buscarRelMentorAluno(): List<Contato> {
+    //    return db.buscarRelMentorAluno()
+    //}
+
+    fun buscarRelMentorAluno(pNome: String): List<Contato> {
+        return db.buscarRelMentorAluno(pNome = pNome)
     }
 
 }
@@ -53,14 +62,16 @@ class ContatoRepository(context: Context) {
         return db.excluir(tbl_aluno = tblAluno)
     }
 
-    fun buscarAlunoPeloId(id: Long): Tbl_aluno {
-        return db.buscarAlunoPeloId (id = id)
-    }
+    //fun buscarAlunoPeloId(id: Int): Tbl_aluno {
+    //    return db.buscarAlunoPeloId (id = id)
+    //}
 
     fun listarAlunos(): List<Tbl_aluno> {
         return db.listarAlunos()
     }
 
 }
+
+
 
 
