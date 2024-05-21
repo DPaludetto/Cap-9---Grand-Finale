@@ -22,15 +22,15 @@ class ContatoRepository(context: Context) {
     }
 
     //fun buscarMentorPeloId(id: Int): Contato {
-    //    return db.buscarMentorPeloId(id = id)
+    //   return db.buscarMentorPeloId(id = id)
     //}
 
     fun listarContatos(): List<Contato> {
         return db.listarContatos()
     }
 
-    //fun buscarRelMentorAluno(pNome: String): List<Contato> {
-    //    return db.buscarRelMentorAluno(pNome = pNome)
+    //fun buscarRelMentorAluno(pExp: String): List<Contato> {
+    //    return db.buscarRelMentorAluno(pExp = pExp)
     //}
 
     fun buscarRelAlunoMentor(): List<Contato> {

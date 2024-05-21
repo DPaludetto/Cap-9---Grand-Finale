@@ -228,17 +228,6 @@ fun AlunoForm(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         )
 
-        /*
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Checkbox(checked = amigo, onCheckedChange = {
-                onAmigoChange(it)
-            })
-            Text(text = "Aula on-line ?")
-        }
-        */
 
         // ####################### \\
         // ####### BOTÃO  ######## \\

@@ -1,6 +1,5 @@
 package br.com.fiap.moneyback.screens
 
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -233,11 +232,6 @@ fun LoginScreen(navController: NavController) {
 
 
 
-
-
-
-
-
         // Espaço
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -313,11 +307,6 @@ fun LoginScreen(navController: NavController) {
             */
 
 
-
-
-
-
-
         }
 
 
@@ -325,10 +314,3 @@ fun LoginScreen(navController: NavController) {
 
 
 }
-
-
-/*Text(
-    text = "Hello $name!",
-    color = Color.Red,
-    modifier = modifier
-)*/

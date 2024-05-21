@@ -22,8 +22,8 @@ interface ContatoDao {
     fun excluir(contato: Contato): Int
 
 
-    @Query("SELECT * FROM tbl_cadmentor WHERE id = :id")
-    fun buscarMentorPeloId(id: Int): Contato
+    //@Query("SELECT * FROM tbl_cadmentor WHERE id = :id")
+    //fun buscarMentorPeloId(id: Int): Contato
 
 // WHERE nome = 'Theo'
     @Query("SELECT * FROM tbl_cadmentor ORDER BY nome ASC")
@@ -48,16 +48,14 @@ interface ContatoDao {
             "tbl_aluno aluno " +
             "WHERE " +
             "mentor.area_expertise = aluno.area_interesse " +
-            //"and mentor.nome like 'D%'" +
-            //"and mentor.nome != :pNome "+
-            //"and mentor.nome = 'Daniela' "+
-            "and aluno.nome = 'Fernanda' "+
+            //"and mentor.area_expertise like :pExp "+
+            "group by" +
+            " mentor.nome, " +
+            " mentor.telefone " +
             "ORDER BY nome ASC")
 
-    //fun buscarRelMentorAluno(pNome: String): List<Contato>
+    //fun buscarRelMentorAluno(pExp: String): List<Contato>
     fun buscarRelAlunoMentor(): List<Contato>
-
-
 
 }
 
@@ -95,13 +93,13 @@ interface ContatoDao {
                 "tbl_aluno aluno " +
                 "WHERE " +
                 "mentor.area_expertise = aluno.area_interesse " +
-                //"and mentor.nome like 'D%'" +
-                //"and mentor.nome != :pNome "+
-                //"and mentor.nome = 'Daniela' "+
-                "and mentor.nome = 'Daniela' "+
+                //"and aluno.area_interesse like :pExp "+
+                "group by" +
+                " aluno.nome, " +
+                " aluno.telefone " +
                 "ORDER BY nome ASC")
 
-        //fun buscarRelMentorAluno(pNome: String): List<Contato>
+        //fun buscarRelMentorAluno(pExp: String): List<Contato>
         fun buscarRelMentorAluno(): List<Tbl_aluno>
 
 

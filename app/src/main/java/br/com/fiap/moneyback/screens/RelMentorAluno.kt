@@ -221,93 +221,6 @@ fun ContatoForm3(
 
         Spacer(modifier = Modifier.height(2.dp))
 
-        /*
-        // ####################### \\
-        // ####### CAMPOS ######## \\
-        // ####################### \\
-        OutlinedTextField(
-            value = studioState,
-            onValueChange = { studioState = it
-                                contatoRepository.buscarRelMentorAluno(studioState)},
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Área Atuação" ) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words),
-            trailingIcon = {
-                IconButton(onClick = {
-
-                    contatoRepository.buscarRelMentorAluno(studioState)
-                    atualizar()
-
-                    /*
-                    //atualizar = {
-                    //    //listaContatosState.value = contatoRepository.buscarRelMentorAluno()
-                    //    listaContatosState.value = contatoRepository.buscarRelMentorAluno(studioState)
-                    //}
-
-                    //val context = LocalContext.current
-                    //val contatoRepository = ContatoRepository(context)
-
-                    //val contatoRepository = ContatoRepository(context = context)
-                    //contatoRepository.excluir(contato = contato)
-                    //contatoRepository.buscarRelMentorAluno()
-                     */
-
-                }) {
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = ""
-                    )
-                }
-            }
-        )
-
-
-        OutlinedTextField(
-            value = studioState,
-            onValueChange = { studioState = it
-                contatoRepository.buscarRelMentorAluno(studioState)},
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Especialidade" ) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words),
-            trailingIcon = {
-                IconButton(onClick = {
-
-                    contatoRepository.buscarRelMentorAluno(studioState)
-                    atualizar()
-
-                }) {
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = ""
-                    )
-                }
-            }
-        )
-
-
-
-        OutlinedTextField(
-            value = studioState,
-            onValueChange = { studioState = it
-                contatoRepository.buscarRelMentorAluno(studioState)},
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Disponibilidade" ) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words),
-            trailingIcon = {
-                IconButton(onClick = {
-
-                    contatoRepository.buscarRelMentorAluno(studioState)
-                    atualizar()
-
-                }) {
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = ""
-                    )
-                }
-            }
-        )
-    */
 
     }
 }
@@ -408,22 +321,6 @@ fun ContatoCard3(contato: Tbl_aluno, atualizar: () -> Unit){
                     fontWeight = FontWeight.Bold
                 )
 
-                /*
-                Text(
-                    text = if(contato.aulaonline) "Formato de aula: on-line" else "Formato de aula: presencial",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                */
-
-/*
-                Text(
-                    //text = if(contato.isAmigo) "Amigo" else "Contato",
-                    text = if(contato.aulaonline) "Formato de aula: on-line" else "Formato de aula: presencial",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
- */
             }
 
             IconButton(onClick = {

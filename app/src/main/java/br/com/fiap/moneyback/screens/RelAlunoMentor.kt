@@ -8,17 +8,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -31,8 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardCapitalization
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -229,99 +221,10 @@ fun ContatoForm4(
 
         Spacer(modifier = Modifier.height(2.dp))
 
-        /*
-        // ####################### \\
-        // ####### CAMPOS ######## \\
-        // ####################### \\
-        OutlinedTextField(
-            value = studioState,
-            onValueChange = { studioState = it
-                                contatoRepository.buscarRelMentorAluno(studioState)},
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Área Atuação" ) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words),
-            trailingIcon = {
-                IconButton(onClick = {
 
-                    contatoRepository.buscarRelMentorAluno(studioState)
-                    atualizar()
-
-                    /*
-                    //atualizar = {
-                    //    //listaContatosState.value = contatoRepository.buscarRelMentorAluno()
-                    //    listaContatosState.value = contatoRepository.buscarRelMentorAluno(studioState)
-                    //}
-
-                    //val context = LocalContext.current
-                    //val contatoRepository = ContatoRepository(context)
-
-                    //val contatoRepository = ContatoRepository(context = context)
-                    //contatoRepository.excluir(contato = contato)
-                    //contatoRepository.buscarRelMentorAluno()
-                     */
-
-                }) {
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = ""
-                    )
-                }
-            }
-        )
-
-
-        OutlinedTextField(
-            value = studioState,
-            onValueChange = { studioState = it
-                contatoRepository.buscarRelMentorAluno(studioState)},
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Especialidade" ) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words),
-            trailingIcon = {
-                IconButton(onClick = {
-
-                    contatoRepository.buscarRelMentorAluno(studioState)
-                    atualizar()
-
-                }) {
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = ""
-                    )
-                }
-            }
-        )
-
-
-
-        OutlinedTextField(
-            value = studioState,
-            onValueChange = { studioState = it
-                contatoRepository.buscarRelMentorAluno(studioState)},
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Disponibilidade" ) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words),
-            trailingIcon = {
-                IconButton(onClick = {
-
-                    contatoRepository.buscarRelMentorAluno(studioState)
-                    atualizar()
-
-                }) {
-                    Icon(imageVector = Icons.Default.Search,
-                        contentDescription = ""
-                    )
-                }
-            }
-        )
-    */
 
     }
 }
-
-
-
 
 // ############################### \\
 // ######## ContatoList3 ######### \\
