@@ -30,12 +30,8 @@ interface ContatoDao {
     fun listarContatos(): List<Contato>
 
 
-    //@Query("SELECT * FROM tbl_cadmentor mentor ORDER BY nome ASC")
-    //@Query("SELECT * FROM tbl_cadmentor mentor WHERE  mentor.nome = :pNome  ORDER BY nome ASC")
-    //@Query("SELECT * FROM tbl_cadmentor mentor, tbl_aluno aluno WHERE mentor.area_expertise = aluno.area_interesse and mentor.id = :id  ORDER BY nome ASC")
-    //@Query("SELECT mentor.nome || aluno.nome as nome, mentor.telefone, mentor.area_expertise, mentor.especializacao, mentor.disponibilidade FROM tbl_cadmentor mentor, tbl_aluno aluno WHERE mentor.area_expertise = aluno.area_interesse ORDER BY nome ASC")
 
-
+    //Relação de conexões de Mentores por Aluno
     @Query("SELECT " +
             "mentor.id, " +
             "mentor.nome as nome, " +
@@ -53,11 +49,15 @@ interface ContatoDao {
             "WHERE " +
             "mentor.area_expertise = aluno.area_interesse " +
             //"and mentor.nome like 'D%'" +
-            "and mentor.nome != :pNome "+
+            //"and mentor.nome != :pNome "+
+            //"and mentor.nome = 'Daniela' "+
+            "and aluno.nome = 'Fernanda' "+
             "ORDER BY nome ASC")
 
-    fun buscarRelMentorAluno(pNome: String): List<Contato>
-    //fun buscarRelMentorAluno(): List<Contato>
+    //fun buscarRelMentorAluno(pNome: String): List<Contato>
+    fun buscarRelAlunoMentor(): List<Contato>
+
+
 
 }
 
@@ -79,6 +79,31 @@ interface ContatoDao {
 
         @Query("SELECT * FROM tbl_aluno ORDER BY nome ASC")
         fun listarAlunos(): List<Tbl_aluno>
+
+        //Relação de conexões de Alunos por Mentor
+        @Query("SELECT " +
+                "aluno.id, " +
+                "aluno.nome as nome, " +
+                //"'Mentor:' || mentor.nome || ' - Aluno:' || aluno.nome as nome, " +
+                "aluno.telefone, " +
+                "aluno.area_interesse  , " +
+                "aluno.especialidade_interesse, " +
+                "aluno.disponibilidade, " +
+                "aluno.experiencia_atual " +
+                "FROM " +
+                "tbl_cadmentor mentor, " +
+                "tbl_aluno aluno " +
+                "WHERE " +
+                "mentor.area_expertise = aluno.area_interesse " +
+                //"and mentor.nome like 'D%'" +
+                //"and mentor.nome != :pNome "+
+                //"and mentor.nome = 'Daniela' "+
+                "and mentor.nome = 'Daniela' "+
+                "ORDER BY nome ASC")
+
+        //fun buscarRelMentorAluno(pNome: String): List<Contato>
+        fun buscarRelMentorAluno(): List<Tbl_aluno>
+
 
     }
 

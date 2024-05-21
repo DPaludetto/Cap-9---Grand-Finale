@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
@@ -171,10 +172,10 @@ fun ContatoForm(
     Column(
         modifier = Modifier.padding(8.dp)
     ){
-        Text(text = "Cadastro de Mentores",
-            fontSize = 15.sp,
+        Text(text = "Perfil do Mentor",
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(color = 0xFFE91E63
+            color = Color(color = 0xFF96A3EC
             )
         )
         Spacer(modifier = Modifier.height(2.dp))
@@ -266,6 +267,7 @@ fun ContatoForm(
         // ####### BOTÃO  ######## \\
         // ####################### \\
         Spacer(modifier = Modifier.height(8.dp))
+
         Button(
             onClick = {
                 val contato = Contato(
@@ -284,13 +286,15 @@ fun ContatoForm(
                 atualizar()
 
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(Color.Gray),
         )
 
         {
             Text(
                 text = "CADASTRAR",
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier.padding(4.dp),
+                color = Color.Black
             )
         }
     }
@@ -321,7 +325,7 @@ fun ContatoCard(contato: Contato, atualizar: () -> Unit){
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = Color.LightGray
+            containerColor = Color.DarkGray
         )
     ) {
         val context = LocalContext.current
@@ -333,43 +337,43 @@ fun ContatoCard(contato: Contato, atualizar: () -> Unit){
                 .weight(2f)
             ) {
                 Text(
-                    //text =  "Nome:${contato.nome}",
-                    text =  contato.nome,
+                    text =  "Nome: ${contato.nome}",
+                    //text =  contato.nome,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = contato.telefone,
+                    text = "Contato: ${contato.telefone}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "Formação:${contato.formacao}",
+                    text = "Formação: ${contato.formacao}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.area_expertise,
+                    text = "Área expertise: ${contato.area_expertise}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.especializacao,
+                    text = "Especialização: ${contato.especializacao}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.tempo_experiencia,
+                    text = "Tempo experiência: ${contato.tempo_experiencia}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.disponibilidade,
+                    text = "Disponibilidade: ${contato.disponibilidade}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )

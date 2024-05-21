@@ -8,17 +8,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -31,19 +25,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardCapitalization
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.fiap.moneyback.database.repository.AlunoRepository
-import br.com.fiap.moneyback.database.repository.ContatoRepository
-import br.com.fiap.moneyback.model.Contato
 import br.com.fiap.moneyback.model.Tbl_aluno
 
 @Composable
-fun PesquisaAlunos(navController: NavController) {
+fun RelMentorAluno(navController: NavController) {
 
     var nomeState = remember {
         mutableStateOf(value = "")
@@ -53,11 +43,11 @@ fun PesquisaAlunos(navController: NavController) {
         mutableStateOf(value =  "")
     }
 
-    var formacaoState = remember {
-        mutableStateOf(value =  "")
-    }
+    //var formacaoState = remember {
+    //    mutableStateOf(value =  "")
+    //}
 
-    var area_expertiseState = remember {
+    var area_interesseState = remember {
         mutableStateOf(value =  "")
     }
 
@@ -73,43 +63,42 @@ fun PesquisaAlunos(navController: NavController) {
         mutableStateOf(value =  "")
     }
 
-    var amigoState = remember {
-        mutableStateOf( value = false)
-    }
+    //var amigoState = remember {
+    //    mutableStateOf( value = false)
+    //}
+
+
+
+
 
     val context = LocalContext.current
-    val contatoRepository = AlunoRepository(context)
+    val alunoRepository = AlunoRepository(context)
 
-    // vaslor digitado na pesquisa
+    // valor digitado na pesquisa
     var studioState by remember {
         mutableStateOf("")
     }
 
-    var listaContatosState = remember {
-        mutableStateOf(contatoRepository.listarAlunos())
+    var listaAlunoState = remember {
+        mutableStateOf(alunoRepository.buscarRelMentorAluno())
+        //mutableStateOf(contatoRepository.buscarRelMentorAluno(studioState))
     }
 
     var idState by remember {
         mutableStateOf(0)
     }
 
-    //var buscarMentorPeloIdState = remember {
-    //    mutableStateOf(contatoRepository.buscarMentorPeloId(4) ) //idState
-    //}
-
-
-
 
     Column {
-        ContatoForm2(
+        ContatoForm3(
             nome = nomeState.value,
             telefone = telefoneState.value,
-            formacao = formacaoState.value,
-            area_expertise = area_expertiseState.value,
+//            formacao = formacaoState.value,
+            area_interesse = area_interesseState.value,
             especializacao = especializacaoState.value,
             tempo_experiencia = tempo_experienciaState.value,
             disponibilidade = disponibilidadeState.value,
-            amigo = amigoState.value,
+//            amigo = amigoState.value,
 
             onNomeChange = {
                 nomeState.value = it
@@ -119,12 +108,12 @@ fun PesquisaAlunos(navController: NavController) {
                 telefoneState.value = it
             },
 
-            onformacaoChange =  {
-                formacaoState.value = it
-            },
+            //onformacaoChange =  {
+            //    formacaoState.value = it
+            //},
 
-            onarea_expertiseChange =  {
-                area_expertiseState.value = it
+            onarea_interesseChange =  {
+                area_interesseState.value = it
             },
 
             onespecializacaoChange =  {
@@ -139,31 +128,28 @@ fun PesquisaAlunos(navController: NavController) {
                 disponibilidadeState.value = it
             },
 
-            onAmigoChange = {
-                amigoState.value = it
-            },
+            //onAmigoChange = {
+            //    amigoState.value = it
+            //},
+
 
 
             atualizar = {
-                listaContatosState.value = contatoRepository.listarAlunos()
-                //buscarMentorPeloIdState.value = contatoRepository.buscarMentorPeloId(4)
-
-                //listaContatosState.value = contatoRepository.listarContatos().filter { it.nome.startsWith(prefix = studioState, ignoreCase = true)
+                listaAlunoState.value = alunoRepository.buscarRelMentorAluno()
+                //listaContatosState.value = contatoRepository.buscarRelMentorAluno(studioState)
             }
         )
 
-        
-        ContatoList2(
+
+
+        // ######################## \\
+        // ####### MAIN ########### \\
+        // ######################## \\
+        ContatoList3(
             // Certo
-            listaContatosState,
-            atualizar = {listaContatosState.value = contatoRepository.listarAlunos()
-
-        //ContatoListPeloId(
-        //    buscarMentorPeloIdState,
-        //    atualizar = {buscarMentorPeloIdState.value = contatoRepository.buscarMentorPeloId(4)
-
-            //atualizar = {listaContatosState.value = contatoRepository.listarContatos().filter { it.nome .startsWith(prefix = studioState, ignoreCase = true) }
-
+            listaAlunoState,
+            atualizar = {listaAlunoState.value = alunoRepository.buscarRelMentorAluno()
+            //atualizar = {listaContatosState.value = contatoRepository.buscarRelMentorAluno(studioState)
             }
         )
 
@@ -173,82 +159,84 @@ fun PesquisaAlunos(navController: NavController) {
 
 
 
+
+// ######################## \\
+// ####### FUNÇÕES ######## \\
+// ######################## \\
+
+
+
+// ############################# \\
+// ####### ContatoForm3 ######## \\
+// ############################# \\
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ContatoForm2(
+fun ContatoForm3(
     nome: String,
     telefone: String,
-    formacao: String,
-    area_expertise: String,
+    //formacao: String,
+    area_interesse: String,
     especializacao: String,
     tempo_experiencia: String,
     disponibilidade: String,
-    amigo: Boolean,
+    //amigo: Boolean,
 
     onNomeChange: (String) -> Unit,
     ontelefoneChange: (String) -> Unit,
-    onformacaoChange: (String) -> Unit,
-    onarea_expertiseChange: (String) -> Unit,
+    //onformacaoChange: (String) -> Unit,
+    onarea_interesseChange: (String) -> Unit,
     onespecializacaoChange: (String) -> Unit,
     ontempo_experienciaChange: (String) -> Unit,
     ondisponibilidadeChange: (String) -> Unit,
-    onAmigoChange: (Boolean) -> Unit,
+    //onAmigoChange: (Boolean) -> Unit,
     atualizar: () -> Unit
 ){
 
     //Obter contexto
     val context = LocalContext.current
-    val contatoRepository = ContatoRepository(context)
+    val alunoRepository = AlunoRepository(context)
 
     // vaslor digitado na pesquisa
     var studioState by remember {
         mutableStateOf("")
     }
 
-    var especialidadeState by remember {
-        mutableStateOf("")
+    var listaAlunoState = remember {
+        mutableStateOf(alunoRepository.buscarRelMentorAluno())
+        //mutableStateOf(contatoRepository.buscarRelMentorAluno(studioState))
     }
 
-    var disponibilidadeState by remember {
-        mutableStateOf("")
-    }
-
-    //var listaContatosState = remember {
-//        mutableStateOf(contatoRepository.listarContatos())
-//    }
-
+    Spacer(modifier = Modifier.height(15.dp))
 
     Column(
-        //modifier = Modifier.padding(8.dp)
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.padding(14.dp),
+
     ){
-        Text(text = "Encontre o seu Aluno",
-            //modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Justify,
+        Text(text = "      Sujestão de Conexões",
             fontSize = 20.sp,
+            textAlign = TextAlign.Justify,
             fontWeight = FontWeight.Bold,
-            color = Color(color = 0xFF96A3EC
-            )
+            color = Color(color = 0xFF96A3EC)
         )
+
         Spacer(modifier = Modifier.height(2.dp))
 
-
+        /*
         // ####################### \\
         // ####### CAMPOS ######## \\
         // ####################### \\
         OutlinedTextField(
             value = studioState,
             onValueChange = { studioState = it
-                                contatoRepository.buscarRelAlunoMentor()},
-                                //contatoRepository.buscarRelMentorAluno(studioState)},
+                                contatoRepository.buscarRelMentorAluno(studioState)},
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Área Interesse" ) },
+            label = { Text(text = "Área Atuação" ) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
                 capitalization = KeyboardCapitalization.Words),
             trailingIcon = {
                 IconButton(onClick = {
-                    contatoRepository.buscarRelAlunoMentor()
-                    //contatoRepository.buscarRelMentorAluno(studioState)
+
+                    contatoRepository.buscarRelMentorAluno(studioState)
                     atualizar()
 
                     /*
@@ -275,18 +263,17 @@ fun ContatoForm2(
 
 
         OutlinedTextField(
-            value = especialidadeState,
-            onValueChange = { especialidadeState = it
-                contatoRepository.buscarRelAlunoMentor()},
-                //contatoRepository.buscarRelMentorAluno(studioState)},
+            value = studioState,
+            onValueChange = { studioState = it
+                contatoRepository.buscarRelMentorAluno(studioState)},
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Especialidade Interesse" ) },
+            label = { Text(text = "Especialidade" ) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
                 capitalization = KeyboardCapitalization.Words),
             trailingIcon = {
                 IconButton(onClick = {
-                    contatoRepository.buscarRelAlunoMentor()
-                    //contatoRepository.buscarRelMentorAluno(studioState)
+
+                    contatoRepository.buscarRelMentorAluno(studioState)
                     atualizar()
 
                 }) {
@@ -300,18 +287,17 @@ fun ContatoForm2(
 
 
         OutlinedTextField(
-            value = disponibilidadeState,
-            onValueChange = { disponibilidadeState = it
-                contatoRepository.buscarRelAlunoMentor()},
-                //contatoRepository.buscarRelMentorAluno(studioState)},
+            value = studioState,
+            onValueChange = { studioState = it
+                contatoRepository.buscarRelMentorAluno(studioState)},
             modifier = Modifier.fillMaxWidth(),
             label = { Text(text = "Disponibilidade" ) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
                 capitalization = KeyboardCapitalization.Words),
             trailingIcon = {
                 IconButton(onClick = {
-                    contatoRepository.buscarRelAlunoMentor()
-                    //contatoRepository.buscarRelMentorAluno(studioState)
+
+                    contatoRepository.buscarRelMentorAluno(studioState)
                     atualizar()
 
                 }) {
@@ -321,9 +307,7 @@ fun ContatoForm2(
                 }
             }
         )
-
-        //Spacer(modifier = Modifier.height(2.dp))
-
+    */
 
     }
 }
@@ -331,13 +315,11 @@ fun ContatoForm2(
 
 
 
-
-
-// ####################### \\
-// ######## LIST ######### \\
-// ####################### \\
+// ############################### \\
+// ######## ContatoList3 ######### \\
+// ############################### \\
 @Composable
-fun ContatoList2(ListaContatos: MutableState<List<Tbl_aluno>>,
+fun ContatoList3(ListaContatos: MutableState<List<Tbl_aluno>>,
                 atualizar: () -> Unit
 ) {
     Column(modifier = Modifier
@@ -347,7 +329,7 @@ fun ContatoList2(ListaContatos: MutableState<List<Tbl_aluno>>,
     ) {
         //for (i in 0 <=..<= 10){
         for (contato in ListaContatos.value){
-            ContatoCard2(contato, atualizar)
+            ContatoCard3(contato, atualizar)
             Spacer(modifier = Modifier.height(4.dp))
         }
     }
@@ -355,7 +337,7 @@ fun ContatoList2(ListaContatos: MutableState<List<Tbl_aluno>>,
 
 /*
 @Composable
-fun ContatoListPeloId(ListaContatos: MutableState<List<Contato>>,
+fun ContatoListPeloId3(ListaContatos: MutableState<List<Contato>>,
                  atualizar: () -> Unit
 ) {
     Column(modifier = Modifier
@@ -365,15 +347,18 @@ fun ContatoListPeloId(ListaContatos: MutableState<List<Contato>>,
     ) {
         //for (i in 0 <=..<= 10){
         for (contato in ListaContatos.value){
-            ContatoCard2(contato, atualizar)
+            ContatoCard3(contato, atualizar)
             Spacer(modifier = Modifier.height(4.dp))
         }
     }
 }
 */
 
+// ############################### \\
+// ######## ContatoCard3 ######### \\
+// ############################### \\
 @Composable
-fun ContatoCard2(contato: Tbl_aluno, atualizar: () -> Unit){
+fun ContatoCard3(contato: Tbl_aluno, atualizar: () -> Unit){
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -389,8 +374,7 @@ fun ContatoCard2(contato: Tbl_aluno, atualizar: () -> Unit){
                 .weight(2f)
             ) {
                 Text(
-                    text =  "Aluno: ${contato.nome}",
-                    //text =  contato.nome,
+                    text =  "Aluno(a): ${contato.nome}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -401,13 +385,13 @@ fun ContatoCard2(contato: Tbl_aluno, atualizar: () -> Unit){
                 )
 
                 Text(
-                    text = "Área Interesse: ${contato.area_interesse}",
+                    text = "Área: ${contato.area_interesse}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "Espec. Interesse: ${contato.especialidade_interesse}",
+                    text = "Especialidade: ${contato.especialidade_interesse}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -424,23 +408,41 @@ fun ContatoCard2(contato: Tbl_aluno, atualizar: () -> Unit){
                     fontWeight = FontWeight.Bold
                 )
 
-            }
-            IconButton(onClick = {
-                //val contatoRepository = ContatoRepository(context = context)
-                //contatoRepository.excluir(contato = contato)
-                //atualizar()
-
-            }) {
                 /*
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = ""
+                Text(
+                    text = if(contato.aulaonline) "Formato de aula: on-line" else "Formato de aula: presencial",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
                 )
                 */
+
+/*
+                Text(
+                    //text = if(contato.isAmigo) "Amigo" else "Contato",
+                    text = if(contato.aulaonline) "Formato de aula: on-line" else "Formato de aula: presencial",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
+ */
+            }
+
+            IconButton(onClick = {
+             /*
+                val alunoRepositoryRepository = ContatoRepository(context = context)
+                alunoRepositoryRepository.excluir(contato = contato)
+                atualizar()
+*/
+            }) {
+                //Icon(
+                    //imageVector = Icons.Default.Delete,
+                    //contentDescription = ""
+                //)
             }
         }
     }
+
 }
+
 
 
 

@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -157,10 +158,10 @@ fun AlunoForm(
     Column(
         modifier = Modifier.padding(8.dp)
     ){
-        Text(text = "Cadastro de Alunos",
-            fontSize = 15.sp,
+        Text(text = "Perfil do Aluno",
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(color = 0xFFE91E63
+            color = Color(color = 0xFF96A3EC
             )
         )
         Spacer(modifier = Modifier.height(2.dp))
@@ -242,7 +243,7 @@ fun AlunoForm(
         // ####################### \\
         // ####### BOTÃO  ######## \\
         // ####################### \\
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         Button(
             onClick = {
                 val tbl_aluno = Tbl_aluno(
@@ -259,13 +260,15 @@ fun AlunoForm(
                 atualizar()
 
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(Color.Gray)
         )
 
         {
             Text(
                 text = "CADASTRAR",
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier.padding(4.dp),
+                color = Color.Black
             )
         }
     }
@@ -296,7 +299,7 @@ fun AlunoCard(tblAluno: Tbl_aluno, atualizar: () -> Unit){
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = Color.LightGray
+            containerColor = Color.DarkGray
         )
     ) {
         val context = LocalContext.current
@@ -309,36 +312,36 @@ fun AlunoCard(tblAluno: Tbl_aluno, atualizar: () -> Unit){
             ) {
                 Text(
                     //text =  "Nome:${contato.nome}",
-                    text =  tblAluno.nome,
+                    text =  "Nome: ${tblAluno.nome}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = tblAluno.telefone,
+                    text = "Contato: ${tblAluno.telefone}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = tblAluno.area_interesse,
+                    text = "Área interesse: ${tblAluno.area_interesse}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = tblAluno.especialidade_interesse,
+                    text = "Espec. interesse: ${tblAluno.especialidade_interesse}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = tblAluno.experiencia_atual,
+                    text = "Experiência: ${tblAluno.experiencia_atual}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = tblAluno.disponibilidade,
+                    text = "Disponibilidade: ${tblAluno.disponibilidade}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )

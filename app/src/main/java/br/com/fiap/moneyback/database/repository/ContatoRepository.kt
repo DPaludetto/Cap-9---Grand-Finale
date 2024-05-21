@@ -29,14 +29,14 @@ class ContatoRepository(context: Context) {
         return db.listarContatos()
     }
 
-
-    //fun buscarRelMentorAluno(): List<Contato> {
-    //    return db.buscarRelMentorAluno()
+    //fun buscarRelMentorAluno(pNome: String): List<Contato> {
+    //    return db.buscarRelMentorAluno(pNome = pNome)
     //}
 
-    fun buscarRelMentorAluno(pNome: String): List<Contato> {
-        return db.buscarRelMentorAluno(pNome = pNome)
+    fun buscarRelAlunoMentor(): List<Contato> {
+        return db.buscarRelAlunoMentor()
     }
+
 
 }
 
@@ -65,6 +65,10 @@ class ContatoRepository(context: Context) {
     //fun buscarAlunoPeloId(id: Int): Tbl_aluno {
     //    return db.buscarAlunoPeloId (id = id)
     //}
+
+    fun buscarRelMentorAluno(): List<Tbl_aluno> {
+        return db.buscarRelMentorAluno()
+    }
 
     fun listarAlunos(): List<Tbl_aluno> {
         return db.listarAlunos()

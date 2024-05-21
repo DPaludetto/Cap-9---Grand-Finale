@@ -12,14 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import br.com.fiap.moneyback.screens.CadGames
-import br.com.fiap.moneyback.screens.Cadastro
 import br.com.fiap.moneyback.screens.CadastroAlunos
 import br.com.fiap.moneyback.screens.CadastroMentores
 import br.com.fiap.moneyback.screens.LoginScreen
 import br.com.fiap.moneyback.screens.MenuScreen
 import br.com.fiap.moneyback.screens.PesquisaAlunos
 import br.com.fiap.moneyback.screens.PesquisaMentores
+import br.com.fiap.moneyback.screens.RelAlunoMentor
 import br.com.fiap.moneyback.screens.RelMentorAluno
 import br.com.fiap.moneyback.ui.theme.MoneyBackTheme
 
@@ -34,9 +33,6 @@ class  MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    //Column {
-                    //    ContatosScreen()
-                    //}
 
                     val navController = rememberNavController()
                     NavHost(
@@ -78,19 +74,21 @@ class  MainActivity : ComponentActivity() {
                             RelMentorAluno(navController)
                         }
 
+                        composable(route = "relalunomentor/{OptMentorAluno}") {
+                            val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
+                            RelAlunoMentor(navController)
+                        }
+
                         /*
                         composable(route = "cadastro/{OptMentorAluno}") {
                             val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
                             Cadastro(navController, OptMentorAluno!!)
                         }
-                        */
-                        /*
+
                         composable(route = "perfilmentor/{OptMentorAluno}") {
                             val OptMentorAluno = it.arguments?.getString("OptMentorAluno")
                             PerfilMentor(navController, OptMentorAluno!!)
-                       */
 
-                        /*
                         composable(route = "cadgames") {
                             CadGames(navController)
                         }

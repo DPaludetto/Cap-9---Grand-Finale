@@ -77,11 +77,18 @@ fun PesquisaMentores(navController: NavController) {
     val context = LocalContext.current
     val contatoRepository = ContatoRepository(context)
 
-    // vaslor digitado na pesquisa
     var studioState by remember {
         mutableStateOf("")
     }
+    /*
+    var especialidadeState by remember {
+        mutableStateOf("")
+    }
 
+    var disponibilidadeState by remember {
+        mutableStateOf("")
+    }
+*/
     var listaContatosState = remember {
         mutableStateOf(contatoRepository.listarContatos())
     }
@@ -202,6 +209,14 @@ fun ContatoForm1(
         mutableStateOf("")
     }
 
+    var especialidadeState by remember {
+        mutableStateOf("")
+    }
+
+    var disponibilidadeState by remember {
+        mutableStateOf("")
+    }
+
     //var listaContatosState = remember {
 //        mutableStateOf(contatoRepository.listarContatos())
 //    }
@@ -210,10 +225,10 @@ fun ContatoForm1(
     Column(
         modifier = Modifier.padding(8.dp)
     ){
-        Text(text = "Pesquisa de Mentores",
-            fontSize = 15.sp,
+        Text(text = "Encontre o seu Mentor",
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(color = 0xFFE91E63
+            color = Color(color = 0xFF96A3EC
             )
         )
         Spacer(modifier = Modifier.height(2.dp))
@@ -225,15 +240,16 @@ fun ContatoForm1(
                 OutlinedTextField(
                     value = studioState,
                     onValueChange = { studioState = it
-                                        contatoRepository.buscarRelMentorAluno(studioState)},
+                        contatoRepository.buscarRelAlunoMentor()},
+                        //contatoRepository.buscarRelMentorAluno(studioState)},
                     modifier = Modifier.fillMaxWidth(),
                     label = { Text(text = "Área Atuação" ) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
                         capitalization = KeyboardCapitalization.Words),
                     trailingIcon = {
                         IconButton(onClick = {
-
-                            contatoRepository.buscarRelMentorAluno(studioState)
+                            contatoRepository.buscarRelAlunoMentor()
+                            //contatoRepository.buscarRelMentorAluno(studioState)
                             atualizar()
 
                             /*
@@ -260,17 +276,18 @@ fun ContatoForm1(
 
 
                 OutlinedTextField(
-                    value = studioState,
-                    onValueChange = { studioState = it
-                        contatoRepository.buscarRelMentorAluno(studioState)},
+                    value = especialidadeState,
+                    onValueChange = { especialidadeState = it
+                        contatoRepository.buscarRelAlunoMentor()},
+                        //contatoRepository.buscarRelMentorAluno(studioState)},
                     modifier = Modifier.fillMaxWidth(),
                     label = { Text(text = "Especialidade" ) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
                         capitalization = KeyboardCapitalization.Words),
                     trailingIcon = {
                         IconButton(onClick = {
-
-                            contatoRepository.buscarRelMentorAluno(studioState)
+                            contatoRepository.buscarRelAlunoMentor()
+                            //contatoRepository.buscarRelMentorAluno(studioState)
                             atualizar()
 
                         }) {
@@ -284,17 +301,18 @@ fun ContatoForm1(
 
 
                 OutlinedTextField(
-                    value = studioState,
-                    onValueChange = { studioState = it
-                        contatoRepository.buscarRelMentorAluno(studioState)},
+                    value = disponibilidadeState,
+                    onValueChange = { disponibilidadeState = it
+                        contatoRepository.buscarRelAlunoMentor()},
+                        //contatoRepository.buscarRelMentorAluno(studioState)},
                     modifier = Modifier.fillMaxWidth(),
                     label = { Text(text = "Disponibilidade" ) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
                         capitalization = KeyboardCapitalization.Words),
                     trailingIcon = {
                         IconButton(onClick = {
-
-                            contatoRepository.buscarRelMentorAluno(studioState)
+                            contatoRepository.buscarRelAlunoMentor()
+                            //contatoRepository.buscarRelMentorAluno(studioState)
                             atualizar()
 
                         }) {
@@ -359,7 +377,7 @@ fun ContatoCard1(contato: Contato, atualizar: () -> Unit){
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = Color.LightGray
+            containerColor = Color.DarkGray
         )
     ) {
         val context = LocalContext.current
@@ -372,42 +390,42 @@ fun ContatoCard1(contato: Contato, atualizar: () -> Unit){
             ) {
                 Text(
                     //text =  "Nome:${contato.nome}",
-                    text =  contato.nome,
+                    text =  "Mentor: ${contato.nome}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = contato.telefone,
+                    text = "Contato: ${contato.telefone}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "Formação:${contato.formacao}",
+                    text = "Formação: ${contato.formacao}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.area_expertise,
+                    text = "Área: ${contato.area_expertise}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.especializacao,
+                    text = "Especialidade: ${contato.especializacao}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.tempo_experiencia,
+                    text = "Experiência: ${contato.tempo_experiencia}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = contato.disponibilidade,
+                    text = "Disponibilidade: ${contato.disponibilidade}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -425,10 +443,12 @@ fun ContatoCard1(contato: Contato, atualizar: () -> Unit){
                 atualizar()
 
             }) {
+                /*
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = ""
                 )
+                */
             }
         }
     }

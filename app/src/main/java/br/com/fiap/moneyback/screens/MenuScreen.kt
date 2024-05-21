@@ -157,13 +157,13 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                 Button(
                     onClick = {
                         //navController.navigate("pesquisamentor/$pOptMentorAluno")
-                        navController.navigate("pesquisamentor")
+                        navController.navigate("pesquisaaluno")
                     },
                     colors = ButtonDefaults.buttonColors(Color.Gray),
                     modifier = Modifier.size(width = 250.dp, height = 48.dp)
                 ) {
                     Text(
-                        text = "Pesquisa Avançada",
+                        text = "Encontre seu Aluno",
                         fontSize = 15.sp,
                         color = Color.Black
                     )
@@ -174,13 +174,13 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                     Button(
                         onClick = {
                             //navController.navigate("pesquisaaluno/$pOptMentorAluno")
-                            navController.navigate("pesquisaaluno")
+                            navController.navigate("pesquisamentor")
                         },
                         colors = ButtonDefaults.buttonColors(Color.Gray),
                         modifier = Modifier.size(width = 250.dp, height = 48.dp)
                     ) {
                         Text(
-                            text = "Pesquisa Avançada",
+                            text = "Encontre seu Mentor",
                             fontSize = 15.sp,
                             color = Color.Black
                         )
@@ -190,6 +190,10 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
 
 
                 //Botão "Relacionamento Mentores x Alunos"
+
+                // Se Opt = Mentor só mostra o botão de cadastro do mentor
+                if (pOptMentorAluno == "M") {
+
                 Button(
                     onClick = {
                         navController.navigate("relmentoraluno/$pOptMentorAluno")
@@ -202,6 +206,24 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                         fontSize = 15.sp,
                         color = Color.Black
                     )
+                }
+
+                } else  {
+
+                    Button(
+                        onClick = {
+                            navController.navigate("relalunomentor/$pOptMentorAluno")
+                        },
+                        colors = ButtonDefaults.buttonColors(Color.Gray),
+                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
+                    ) {
+                        Text(
+                            text = "Conexões identificadas",
+                            fontSize = 15.sp,
+                            color = Color.Black
+                        )
+                    }
+
                 }
 
 
