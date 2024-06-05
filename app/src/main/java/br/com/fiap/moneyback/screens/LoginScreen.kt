@@ -19,6 +19,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -75,7 +76,7 @@ fun LoginScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Black)
+            .background(Color(color = 0xFF0CB7E2))
 
     ) {
 
@@ -89,9 +90,10 @@ fun LoginScreen(navController: NavController) {
 
 
             Text(
-                text = "Mentoria Acadêmica",
+                text = "Controle de Estoque",
                 fontSize = 30.sp,
-                color = Color(color = 0xFF96A3EC),
+                //color = Color(color = 0xFF05BAF1),
+                color = Color.Black,
                 textAlign = TextAlign.Justify
             )
         }
@@ -103,12 +105,14 @@ fun LoginScreen(navController: NavController) {
             modifier = Modifier
                 .padding(32.dp)
                 .fillMaxWidth()
-                .background(Color.Black)
+                //.background(Color.Black)
+                .background(Color(color = 0xFF0CB7E2)) //
+
         ) {
             Image(
-                painter = painterResource(id = R.drawable.chapeuformandopreto), // coracao
-                contentDescription = "chapeuformando",//"coracao",
-                modifier = Modifier.size(300.dp),
+                painter = painterResource(id = R.drawable.controleestoque), // coracao
+                contentDescription = "controleestoque",//"chapeuformando",
+                modifier = Modifier.size(300.dp)
             )
 
         }
@@ -123,7 +127,6 @@ fun LoginScreen(navController: NavController) {
         // ############################ \\
         OutlinedTextField(
             modifier = Modifier.width(300.dp),
-
             //TextField(
             value = login,
             //onValueChange = { letra ->
@@ -134,6 +137,7 @@ fun LoginScreen(navController: NavController) {
             singleLine = true,
             placeholder = {
                 Text(text = "Entre com seu Login")
+                Color(color = 0xFF0F0F0F)
             },
             trailingIcon = {
                 Icon(
@@ -161,6 +165,7 @@ fun LoginScreen(navController: NavController) {
             singleLine = true,
             placeholder = {
                 Text(text = "Entre com sua Senha")
+                Color(color = 0xFFD2E1E6)
             },
             trailingIcon = {
                 Icon(
@@ -178,56 +183,7 @@ fun LoginScreen(navController: NavController) {
 
 
         // Espaço
-        Spacer(modifier = Modifier.height(10.dp))
-
-        // ############################ \\
-        // ####### RADIO ALUNO ######## \\
-        // ############################ \\
-        Row(verticalAlignment = Alignment.CenterVertically){
-            RadioButton(
-                selected = OptMentorAluno == 1,
-                onClick = { OptMentorAluno = 1 },
-                colors = RadioButtonDefaults.colors(
-                    selectedColor = Color.White,
-                    unselectedColor = Color.Gray
-                )
-
-            )
-            Text(text = "Aluno  ")
-        }
-
-
-
-        // ############################# \\
-        // ####### RADIO MENTOR ######## \\
-        // ############################# \\
-        Row(verticalAlignment = Alignment.CenterVertically,    ){
-            RadioButton(
-                selected = OptMentorAluno == 0,
-                onClick = { OptMentorAluno = 0 },
-                colors = RadioButtonDefaults.colors(
-                    selectedColor = Color.White,
-                    unselectedColor = Color.Gray
-                )
-            )
-            Text(text = "Mentor")
-        }
-
-        /*
-        // Radio button Ambos
-        Row(verticalAlignment = Alignment.CenterVertically){
-            RadioButton(
-                selected = OptMentorAluno == 2,
-                onClick = { OptMentorAluno = 2 },
-                colors = RadioButtonDefaults.colors(
-                    selectedColor = Color.Black,
-                    unselectedColor = Color.Gray
-                )
-
-            )
-            Text(text = "Ambos")
-        }
-        */
+//        Spacer(modifier = Modifier.height(10.dp))
 
 
 
@@ -245,7 +201,8 @@ fun LoginScreen(navController: NavController) {
             Row(
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .background(Color.Black)
+                    //.background(Color.Black)
+                    .background(Color(color = 0xFF0CB7E2))
                     .fillMaxWidth()
                     .height(70.dp)
             ) {
@@ -272,7 +229,8 @@ fun LoginScreen(navController: NavController) {
 
 
                     },
-                    colors = ButtonDefaults.buttonColors(Color.Gray),
+                    //colors = ButtonDefaults.buttonColors(Color.White),
+                    colors = ButtonDefaults.buttonColors(Color(color = 0xFFD2E1E6)),
                     modifier = Modifier.size(width = 150.dp, height = 48.dp)
                 ) {
                     Text(text = "Entrar", fontSize = 15.sp, color = Color.Black)

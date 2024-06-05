@@ -4,21 +4,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import br.com.fiap.moneyback.model.Contato
-import br.com.fiap.moneyback.model.Tbl_aluno
+import br.com.fiap.moneyback.model.Produto
+//import br.com.fiap.moneyback.model.Tbl_aluno
 
 
 //## Caso exista mais  classes acrecentar a virgula e colocar como no exemplo abaixo
 @Database(
-    entities = [Contato::class,  Tbl_aluno:: class],
-    //entities = [Contato::class],
+    //entities = [Contato::class,  Tbl_aluno:: class],
+    entities = [Produto::class],
     version = 1
 )
 
 abstract class ContatoDb: RoomDatabase() {
 
     abstract fun contatoDao(): ContatoDao
-    abstract fun tbl_alunoDao(): Tbl_alunoDao
+    //abstract fun tbl_alunoDao(): Tbl_alunoDao
 
     companion object {
 
@@ -31,7 +31,7 @@ abstract class ContatoDb: RoomDatabase() {
                         context,
                         ContatoDb::class.java,
 
-                        name = "cadmentor_db"
+                        name = "controleestoque_db"
                     )
                     .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()

@@ -4,6 +4,17 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+
+@Entity(tableName = "tb_produto")
+data class Produto (
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
+    var nome: String = "",
+    var quantidade: String = "",
+    var preco: String = "",
+    @ColumnInfo(name = "produto_novo") var produtonovo: Boolean = false
+)
+
+/*
 @Entity(tableName = "tbl_cadmentor")
 data class Contato (
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
@@ -16,8 +27,8 @@ data class Contato (
     var disponibilidade: String = "",
     @ColumnInfo(name = "aula_online") var aulaonline: Boolean = false
 )
-
-
+*/
+/*
 @Entity(tableName = "tbl_aluno")
 data class Tbl_aluno (
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
@@ -29,3 +40,4 @@ data class Tbl_aluno (
     var disponibilidade: String = ""
 
 )
+*/

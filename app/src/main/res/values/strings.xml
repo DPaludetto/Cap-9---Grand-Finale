@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">Money Back</string>
-    <string name="channel_name">Example Channel</string>
-    <string name="channel_description">This is an example notification channel.</string>
 </resources>

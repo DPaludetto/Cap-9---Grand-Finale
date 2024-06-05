@@ -2,22 +2,22 @@ package br.com.fiap.moneyback.database.repository
 
 import android.content.Context
 import br.com.fiap.moneyback.database.dao.ContatoDb
-import br.com.fiap.moneyback.model.Contato
-import br.com.fiap.moneyback.model.Tbl_aluno
+import br.com.fiap.moneyback.model.Produto
+//import br.com.fiap.moneyback.model.Tbl_aluno
 
 class ContatoRepository(context: Context) {
 
     var db = ContatoDb.getDatabase(context).contatoDao()
 
-    fun salvar(contato: Contato): Long {
+    fun salvar(contato: Produto): Long {
         return db.salvar(contato = contato)
     }
 
-    fun atualizar(contato: Contato): Int {
+    fun atualizar(contato: Produto): Int {
         return db.atualizar(contato = contato)
     }
 
-    fun excluir(contato: Contato): Int {
+    fun excluir(contato: Produto): Int {
         return db.excluir(contato = contato)
     }
 
@@ -25,7 +25,7 @@ class ContatoRepository(context: Context) {
     //   return db.buscarMentorPeloId(id = id)
     //}
 
-    fun listarContatos(): List<Contato> {
+    fun listarContatos(): List<Produto> {
         return db.listarContatos()
     }
 
@@ -33,49 +33,9 @@ class ContatoRepository(context: Context) {
     //    return db.buscarRelMentorAluno(pExp = pExp)
     //}
 
-    fun buscarRelAlunoMentor(): List<Contato> {
-        return db.buscarRelAlunoMentor()
-    }
-
-
-}
-
-
-
-
-
-
-    class AlunoRepository(context: Context) {
-
-        var db = ContatoDb.getDatabase(context).tbl_alunoDao()
-
-
-    fun salvarAluno(tblAluno: Tbl_aluno): Long {
-        return db.salvar(tbl_aluno = tblAluno)
-    }
-
-    fun atualizarAluno(tblAluno: Tbl_aluno): Int {
-        return db.atualizar(tbl_aluno = tblAluno)
-    }
-
-    fun excluirAluno(tblAluno: Tbl_aluno): Int {
-        return db.excluir(tbl_aluno = tblAluno)
-    }
-
-    //fun buscarAlunoPeloId(id: Int): Tbl_aluno {
-    //    return db.buscarAlunoPeloId (id = id)
+    //fun buscarRelAlunoMentor(): List<Contato> {
+    //    return db.buscarRelAlunoMentor()
     //}
 
-    fun buscarRelMentorAluno(): List<Tbl_aluno> {
-        return db.buscarRelMentorAluno()
-    }
-
-    fun listarAlunos(): List<Tbl_aluno> {
-        return db.listarAlunos()
-    }
 
 }
-
-
-
-

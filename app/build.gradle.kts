@@ -74,6 +74,9 @@ dependencies {
     // Dependencia da Notification
     implementation ("androidx.core:core-ktx:1.9.0")
 
+    // Permissions
+    implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
+
     implementation ("androidx.room:room-runtime:2.5.2")
     annotationProcessor ("androidx.room:room-compiler:2.5.2:")
     kapt ("androidx.room:room-compiler:2.5.2:")

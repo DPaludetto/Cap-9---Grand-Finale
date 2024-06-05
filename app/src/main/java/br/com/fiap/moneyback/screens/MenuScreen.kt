@@ -1,5 +1,6 @@
 package br.com.fiap.moneyback.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,10 +16,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import br.com.fiap.moneyback.WaterNotificationService
 
 @Composable
 fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
@@ -31,16 +34,23 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
     ){
     */
     // Espaço
+
+    //val context = LocalContext.current
+
     Spacer(modifier = Modifier.height(10.dp))
 
             Column (
-                modifier = Modifier.padding(24.dp),
-
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(color = 0xFF0CB7E2))
+                    .padding(24.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally,
+
                 //modifier = Modifier
                 //    .fillMaxWidth()
                 //.background(Color.White)
+                //.background(Color(color = 0xFF0CB7E2))
 
             ){
 
@@ -50,9 +60,10 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
 
 
                     Text(
-                        text = "Mentoria Acadêmica",
+                        text = "Controle de Estoque",
                         fontSize = 25.sp,
-                        color = Color(color = 0xFF96A3EC),
+                        //color = Color(color = 0xFF96A3EC),
+                        color = Color.Black,
                         textAlign = TextAlign.Justify
                     )
 
@@ -86,213 +97,24 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                 //Botão "Cadastro de perfil"
 
                 // Se Opt = Mentor só mostra o botão de cadastro do mentor
-                if (pOptMentorAluno == "M") {
+                //if (pOptMentorAluno == "M") {
 
                 Button(
                     onClick = {
                         //navController.navigate("cadmentor/$pOptMentorAluno")
-                        navController.navigate("cadmentor")
+                        navController.navigate("cadproduto")
                     },
-                    colors = ButtonDefaults.buttonColors(Color.Gray),
+                    //colors = ButtonDefaults.buttonColors(Color.Gray),
+                    colors = ButtonDefaults.buttonColors(Color(color = 0xFFD2E1E6)),
                     modifier = Modifier.size(width = 250.dp, height = 48.dp)
                 ) {
                     Text(
-                        text = "Cadastro de Perfil",
+                        text = "Cadastro de Produtos",
                         fontSize = 15.sp,
                         color = Color.Black
                     )
                 }
 
-                //} else if (pOptMentorAluno == "A") {
-                } else  {
-
-                    Button(
-                        onClick = {
-                            //navController.navigate("cadaluno/$pOptMentorAluno")
-                            navController.navigate("cadaluno")
-                        },
-                        colors = ButtonDefaults.buttonColors(Color.Gray),
-                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                    ) {
-                        Text(
-                            text = "Cadastro de Perfil",
-                            fontSize = 15.sp,
-                            color = Color.Black
-                        )
-                    }
-
-                }
-
-
-/*
-                //
-                //Botão "Exemplo Games"
-                Button(
-                    onClick = {
-                        //navController.navigate("perfilmentor/$pOptMentorAluno")
-                        navController.navigate("cadgames")
-                    },
-                    colors = ButtonDefaults.buttonColors(Color.Gray),
-                    modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                ) {
-                    Text(
-                        text = "Exemplo Games",
-                        fontSize = 15.sp,
-                        color = Color.Black
-                    )
-                }
- */
-
-                //Botão "Pesquisa Mentores"
-
-                // Se Opt = Mentor só mostra o botão de cadastro do mentor
-                if (pOptMentorAluno == "M") {
-
-                Button(
-                    onClick = {
-                        //navController.navigate("pesquisamentor/$pOptMentorAluno")
-                        navController.navigate("pesquisaaluno")
-                    },
-                    colors = ButtonDefaults.buttonColors(Color.Gray),
-                    modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                ) {
-                    Text(
-                        text = "Encontre seu Aluno",
-                        fontSize = 15.sp,
-                        color = Color.Black
-                    )
-                }
-
-                } else  {
-
-                    Button(
-                        onClick = {
-                            //navController.navigate("pesquisaaluno/$pOptMentorAluno")
-                            navController.navigate("pesquisamentor")
-                        },
-                        colors = ButtonDefaults.buttonColors(Color.Gray),
-                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                    ) {
-                        Text(
-                            text = "Encontre seu Mentor",
-                            fontSize = 15.sp,
-                            color = Color.Black
-                        )
-                    }
-
-                }
-
-
-                //Botão "Relacionamento Mentores x Alunos"
-
-                // Se Opt = Mentor só mostra o botão de cadastro do mentor
-                if (pOptMentorAluno == "M") {
-
-                Button(
-                    onClick = {
-                        navController.navigate("relmentoraluno/$pOptMentorAluno")
-                    },
-                    colors = ButtonDefaults.buttonColors(Color.Gray),
-                    modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                ) {
-                    Text(
-                        text = "Conexões identificadas",
-                        fontSize = 15.sp,
-                        color = Color.Black
-                    )
-                }
-
-                } else  {
-
-                    Button(
-                        onClick = {
-                            navController.navigate("relalunomentor/$pOptMentorAluno")
-                        },
-                        colors = ButtonDefaults.buttonColors(Color.Gray),
-                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                    ) {
-                        Text(
-                            text = "Conexões identificadas",
-                            fontSize = 15.sp,
-                            color = Color.Black
-                        )
-                    }
-
-                }
-
-
-                /*
-                // Se Opt = Mentor só mostra o botão de cadastro do mentor
-                if (pOptMentorAluno == "M") {
-
-                    //Botão "Cadastro de Mentores"
-                    Button(
-                        onClick = {
-                            //navController.navigate("perfertil")
-                            navController.navigate("cadmentor")
-                        },
-                        colors = ButtonDefaults.buttonColors(Color.Cyan),
-                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                    ) {
-                        Text(
-                            text = "Cadastro Mentores",
-                            //text = "Cadastro Mentores - $pOptMentorAluno",
-                            fontSize = 15.sp,
-                            color = Color.Black
-                        )
-                    }
-
-                } else if (pOptMentorAluno == "A") {
-
-                        //Botão "Cadastro de Alunos"
-                        Button(
-                            onClick = {
-                                //navController.navigate("bebaagua")
-                                navController.navigate("cadaluno")
-                            },
-                            colors = ButtonDefaults.buttonColors(Color.Cyan),
-                            modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                        ) {
-                            Text(text = "Cadastro de Alunos", fontSize = 15.sp, color = Color.Black)
-                        }
-
-                } else {
-
-
-
-                    //Botão "Cadastro de Mentores"
-                    Button(
-                        onClick = {
-                            //navController.navigate("perfertil")
-                            navController.navigate("cadmentor")
-                        },
-                        colors = ButtonDefaults.buttonColors(Color.Cyan),
-                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                    ) {
-                        Text(
-                            text = "Cadastro Mentores",
-                            //text = "Cadastro Mentores - $pOptMentorAluno",
-                            fontSize = 15.sp,
-                            color = Color.Black
-                        )
-                    }
-
-
-                    //Botão "Cadastro de Alunos"
-                    Button(
-                        onClick = {
-                            //navController.navigate("bebaagua")
-                            navController.navigate("cadaluno")
-                        },
-                        colors = ButtonDefaults.buttonColors(Color.Cyan),
-                        modifier = Modifier.size(width = 250.dp, height = 48.dp)
-                    ) {
-                        Text(text = "Cadastro de Alunos", fontSize = 15.sp, color = Color.Black)
-                    }
-
-                }
-
-                */
 
                 Spacer(modifier = Modifier.height(32.dp))
 
@@ -309,7 +131,8 @@ fun MenuScreen(navController: NavController, pOptMentorAluno: String) {
                         onClick = {
                             navController.navigate("login")
                         },
-                        colors = ButtonDefaults.buttonColors(Color.Gray),
+                        //colors = ButtonDefaults.buttonColors(Color.Gray),
+                        colors = ButtonDefaults.buttonColors(Color(color = 0xFFD2E1E6)),
                         modifier = Modifier.size(width = 250.dp, height = 48.dp)
                     ) {
                         Text(text = "Voltar", fontSize = 15.sp, color = Color.Black)
