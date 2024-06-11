@@ -1,0 +1,72 @@
+server:
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 8MB
+    context-path: /palutec
+    
+spring:
+  application:
+    name: controle-estoque
+
+  jpa:
+    show-sql: true
+    format-sql: true
+    hibernate:
+      ddl-auto: update
+      connection:
+        provider_class: org.hibernate.hikaricp.internal.HikariCPConnectionProvider
+   
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  datasource:
+    minimumIdle: 5
+    maximumPoolSize: 20
+    idleTimeout: 30000
+    maxLifetime: 2000000
+    connectionTimeout: 30000
+    initializationFailTimeout: -1
+    
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:~/fiap
+    username: sa
+    password:
+    
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1/crudprodutos?allowPublicKeyRetrieval=true
+#    username: crudprodutos
+#    password: crudprodutos
+  
+  h6:
+    console:
+      enabled: true
+      path: /h2
+      
+  mvc:
+    format:
+      date: dd/MM/yyyy
+      date-time: dd/MM/yyyy HH:mm:ss
+      time: HH:mm:ss
+
+  security:
+    user:
+      name: user
+      password: x1234
+  
+  data:
+    rest:
+      max-page-size: 30
+    web:
+      pageable:
+        max-page-size: 30
+        
+
+app:         
+  version: ${project.version:1;2023-04}
+  buildTime: ${build.time}
+  javaSourceVersion: ${sourceVersion}
+  javaTargetVersion: ${targetVersion}
+  mavenVersion: ${mavenVersion}
+  gitHash: ${git.commit.id}
+  gitBranch: ${git.branch}
+  

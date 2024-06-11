@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration>
+
+	<property resource="application.yaml" />
+
+	<springProperty name="appName" source="spring.application.name"/>
+	
+	
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+	<conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+	<conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+	
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!-- 
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%-5level] [%X{hostname} %X{localIP}][%X{requestIP}] %logger{40}.%M:%line - %message%n %xEx</pattern>
+			 -->
+			 <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%-5level] %logger{40}.%M:%line - %message%n %xEx</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${console.log.level:INFO}</level>
+        </filter>
+	</appender>
+	
+	<!-- 
+	<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>${logstash.destination}</destination>
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<customFields>{"appName":"${appName}"}</customFields>
+		</encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${logstash.log.level:info}</level>
+        </filter>		
+		<param name="Encoding" value="UTF-8" />
+	</appender>	
+ 	-->
+	
+	<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+		<graylogHost>${graylog.host}</graylogHost>
+		<graylogPort>${graylog.port}</graylogPort>
+		<encoder class="de.siegmar.logbackgelf.GelfEncoder">
+			<includeLevelName>true</includeLevelName>
+			<staticField>app_name:gestao-demanda</staticField>
+		</encoder>
+	</appender>
+	
+
+	<logger name="br.com.martelab.gd" level="${gd.log.level:info}">
+		<!-- appender-ref ref="logstash" / -->
+	</logger>
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<!--  appender-ref ref="logstash" /-->
+		<!--  appender-ref ref="GELF" /-->
+	</root>
+</configuration>
