@@ -1,0 +1,1 @@
+insert into sys_user (username, password, name, mail, st_user) values ('dca', 'dca', 'diegocamaral@gmail.com', 'ACTIVE');

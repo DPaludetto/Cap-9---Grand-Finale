@@ -8,7 +8,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.martelab</groupId>
-	<artifactId>controle-estoque-api</artifactId>
+	<artifactId>crud-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>crud-api</name>
 	<description>API backend</description>
@@ -200,30 +200,6 @@
 			<groupId>org.hibernate.search</groupId>
 			<artifactId>hibernate-search-mapper-orm-orm6</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate.search</groupId>
-			<artifactId>hibernate-search-backend-lucene</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.apache.tika</groupId>
-			<artifactId>tika-core</artifactId>
-			<version>2.7.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.pdfbox</groupId>
-			<artifactId>pdfbox</artifactId>
-			<version>2.0.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.pdfbox</groupId>
-			<artifactId>pdfbox-tools</artifactId>
-			<version>2.0.8</version>
 		</dependency>
 
 		<dependency>

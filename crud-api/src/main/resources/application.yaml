@@ -7,18 +7,26 @@ server:
     
 spring:
   application:
-    name: controle-estoque
+    name: crud-api
 
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      
   jpa:
-    show-sql: true
-    format-sql: true
-    hibernate:
-      ddl-auto: update
-      connection:
-        provider_class: org.hibernate.hikaricp.internal.HikariCPConnectionProvider
-   
     database-platform: org.hibernate.dialect.H2Dialect
-
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+          import_files: 
+            - "populate-database.sql"
+#        format_sql: true
+#        connection:
+#          provider_class: org.hibernate.hikaricp.internal.HikariCPConnectionProvider
+   
   datasource:
     minimumIdle: 5
     maximumPoolSize: 20
@@ -28,7 +36,7 @@ spring:
     initializationFailTimeout: -1
     
     driverClassName: org.h2.Driver
-    url: jdbc:h2:file:~/fiap
+    url: jdbc:h2:file:~/crud
     username: sa
     password:
     
@@ -37,11 +45,6 @@ spring:
 #    username: crudprodutos
 #    password: crudprodutos
   
-  h6:
-    console:
-      enabled: true
-      path: /h2
-      
   mvc:
     format:
       date: dd/MM/yyyy
