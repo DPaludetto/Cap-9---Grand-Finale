@@ -1,7 +1,5 @@
-package br.com.fiap.moneyback.screens
+package br.com.fiap.estoque.screens
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -39,9 +36,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import br.com.fiap.moneyback.database.repository.ContatoRepository
+import br.com.fiap.estoque.database.repository.ContatoRepository
 //import br.com.fiap.moneyback.model.Contato
-import br.com.fiap.moneyback.model.Produto
+import br.com.fiap.estoque.model.Produto
 
     @Composable
     fun CadastroProdutos(navController: NavController) {

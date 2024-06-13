@@ -1,4 +1,4 @@
-package br.com.fiap.moneyback
+package br.com.fiap.estoque
 
 import org.junit.Test
 

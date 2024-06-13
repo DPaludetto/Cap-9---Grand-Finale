@@ -24,6 +24,9 @@ public class Product extends AbstractBeanModel{
 	
 	@Column(name = "ds_description")
 	private String description;
+	
+	@Column(name = "vl_price")
+	private Double price;
 
 	@Column(name = "qt_stock_quantity")
 	private Integer stockQuantity;

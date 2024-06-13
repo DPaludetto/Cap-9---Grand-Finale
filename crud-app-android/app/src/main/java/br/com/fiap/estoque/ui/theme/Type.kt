@@ -1,4 +1,4 @@
-package br.com.fiap.moneyback.ui.theme
+package br.com.fiap.estoque.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
