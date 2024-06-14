@@ -1,0 +1,10 @@
+<p-tabView>
+    <p-tabPanel header="Resumo" [selected]="true">
+        <app-boleto-info id="{{ boleto?.id }}"></app-boleto-info>
+    </p-tabPanel>
+    <!--
+    <p-tabPanel header="Log Processamento" >
+        <app-timeline [events]="events"></app-timeline>
+    </p-tabPanel>
+    -->
+</p-tabView>

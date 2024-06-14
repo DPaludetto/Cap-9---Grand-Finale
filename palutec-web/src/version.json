@@ -1,0 +1,10 @@
+{ 
+    "version" : "development", 
+    "branch" : "current", 
+    "author" : "you", 
+    "sha" : "no sha avaiable", 
+    "beforeSha" : "no before sha avaiable", 
+    "message" : "no message", 
+    "commitTimestamp" : "no date", 
+    "runner" : "no runner" 
+}

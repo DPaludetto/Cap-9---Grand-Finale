@@ -1,0 +1,13 @@
+.item{
+    text-align: center; 
+    padding: 5px 5px 5px 5px; 
+    border-radius: 10px; 
+    width: 220px;
+    // border: 1px solid black;
+    // border-style: dotted;
+}
+.item-selected{
+    font-weight: bold; 
+    background-color: rgb(214, 250, 214);
+    border: 2px solid black !important;
+}

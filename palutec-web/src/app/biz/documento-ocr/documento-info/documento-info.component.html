@@ -1,0 +1,11 @@
+<p-tabView>
+    <p-tabPanel header="Log de Processamento" [selected]="true">
+        <!-- <app-timeline [events]="events"></app-timeline> -->
+        <app-data-table
+            [columns]="logColumns" 
+            [dataSource]="logSource"
+            [multipleSelection] = false>
+        </app-data-table>
+    </p-tabPanel>
+
+</p-tabView>

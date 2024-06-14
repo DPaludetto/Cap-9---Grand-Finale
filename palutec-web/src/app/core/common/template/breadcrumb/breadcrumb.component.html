@@ -1,0 +1,9 @@
+<div class="container-breadcrumb">
+  <ol class="breadcrumb app-breadcrumb">
+    <li *ngFor="let breadcrumb of breadcrumbs">
+      <span  [routerLink]="breadcrumb.url" routerLinkActive="actived" class="breadcrumb-text"
+        [routerLinkActiveOptions]="{ exact: true }" #rlink="routerLinkActive">{{ breadcrumb.label }}</span>
+      <span class="divider" *ngIf="!rlink.isActive">/</span>
+    </li>
+  </ol>
+</div>

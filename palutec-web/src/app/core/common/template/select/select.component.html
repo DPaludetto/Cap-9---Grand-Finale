@@ -1,0 +1,15 @@
+<form [formGroup]="parentForm">
+  <p-dropdown
+    class="qwa-dropdown"
+    [options]="items"
+    placeholder="Selecione"
+    [optionLabel]="bindLabel"
+    [optionValue]="bindValue"
+    [optionDisabled]="bindValueDisabled"
+    [formControlName]="fieldName"
+    (onChange)="onChangeValue($event)"
+    (onClick)="onClick($event)"
+    [emptyFilterMessage]="emptyMessage"
+    [filter]="filter">
+  </p-dropdown>
+</form>

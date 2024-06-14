@@ -1,0 +1,15 @@
+<div [formGroup]="parentForm"  >
+  <label htmlFor="{{ name }}">{{ label }}</label>
+  <div class="p-inputgroup">
+    <span *ngIf="addonIcon !== ''" class="p-inputgroup-addon" (click)="onAddonClick"><i class="pi {{addonIcon}}"></i></span>
+    <input *ngIf="mode == 'text'" pInputText type="text" class="input-text" formControlName="{{name}}" />
+    <input *ngIf="mode == 'date'" pInputText type="date" class="input-text" formControlName="{{name}}" />
+    <input *ngIf="mode == 'datetime'" pInputText type="datetime" class="input-text" formControlName="{{name}}" />
+    <p-inputNumber *ngIf="mode == 'decimal'" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2" formControlName="{{name}}" ></p-inputNumber>
+  </div>
+  <!--
+  <div style="float: left; padding-top: 10px; cursor: pointer;" *ngIf="copyable" (click)="toClipboard()">
+    <mat-icon  svgIcon="copy_clb"></mat-icon>
+  </div>
+  -->
+</div>

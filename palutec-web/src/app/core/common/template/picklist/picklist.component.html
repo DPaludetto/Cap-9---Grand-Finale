@@ -1,0 +1,32 @@
+<form [formGroup]="parentForm">
+  <div>
+    <div class="actionPanel">
+      <div style="float: left">Exibindo <b>{{source.length}}</b> itens</div>
+      <div style="float: right">Exibindo <b>{{target.length}}</b> itens</div>
+    </div>
+    <div>
+    <p-pickList #pPicklist
+      [sourceHeader]="sourceHeader" 
+      [targetHeader]="targetHeader" 
+      [source]="source"
+      [target]="target" 
+      [disabled]="disabled || disableComponent()" 
+      [filterBy]="filterBy"
+      (onMoveToTarget)="onMoveToSource" 
+      (onMoveToSource)="onMoveToSource"
+      (onMoveAllToTarget)="onMoveToTarget" 
+      (onMoveAllToSource)="onMoveToTarget">
+      <ng-template let-element pTemplate="item">
+        <div>
+          {{element.uiDescription}}
+        </div>
+      </ng-template>
+
+    </p-pickList>
+    </div>
+    <div class="actionPanel">
+      <button *ngIf="showCopy" type="button" class="btn btn-light" style="float: right" (click)="clipboardCopyTarget()">Copiar itens</button>
+    </div>
+
+  </div>
+</form>

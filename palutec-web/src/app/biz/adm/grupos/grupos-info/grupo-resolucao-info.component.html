@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+    <div class="">
+        <div class="grid">
+            <div class="col-12">
+                <h5>Grupo de Resolução</h5>
+                <div class="p-fluid p-formgrid grid">
+                    
+                    <div class="field col-2">
+                        <app-form-input [parentForm]="form" label="Grupo" name="nome"></app-form-input>
+                    </div>
+                    <div class="field col-2">
+                        <app-form-input [parentForm]="form" label="Descrição" name="descricao"></app-form-input>
+                    </div>
+
+                </div>
+            </div>
+
+        </div> 
+    
+      
+    
+        <div class="bg-light flex gap-2" style="border: 1px solid rgb(228, 228, 228); position: fixed; bottom: 0; width: 100%;  right: 0; padding: 5px 5px 5px 5px; background-color: rgb(246, 249, 252);">
+            <div class="flex flex-wrap gap-2 text-right" style="right: 0; text-align: right">
+            <p-button label="Salvar" icon="pi pi-save" styleClass="p-button-"></p-button>
+            <p-button label="Cancelar" icon="pi pi-ban" styleClass="p-button-outlined"></p-button>
+            </div>
+        </div>
+    
+    </div>    
+    </form>
+    
+    
+    

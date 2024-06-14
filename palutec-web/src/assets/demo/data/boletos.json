@@ -1,0 +1,36 @@
+{
+    "data": [
+        {    
+			"despesa" : "aluguel",
+			"valor" : 5321.65,
+            "vencimento" : "01/11/2023",
+            "cedente" : {
+				"nome" : "Diego Amaral",
+				"cpfCnpj" : "0123456789"
+			},
+            "dataDocumento" : "20/04/2023",
+            "descontos" : "5.00",
+            "abatimentos" : "15.00",
+            "moraMulta" : "1.00",
+            "juros" : "",
+            "sacado" : "Sacado do Boleto",
+            "status" : "Encaminhado para Fila"
+        },
+        {    
+			"despesa" : "aluguel",
+			"valor" : 5321.65,
+            "vencimento" : "01/11/2023",
+            "cedente" : {
+				"nome" : "Diego Amaral",
+				"cpfCnpj" : "0123456789"
+			},
+            "dataDocumento" : "20/04/2023",
+            "descontos" : "5.00",
+            "abatimentos" : "15.00",
+            "moraMulta" : "1.00",
+            "juros" : "",
+            "sacado" : "Sacado do Boleto",
+            "status" : "Encaminhado para Fila"
+        }        
+    ]
+}

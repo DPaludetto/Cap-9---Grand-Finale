@@ -1,0 +1,11 @@
+<p-timeline [value]="events" layout="horizontal" align="top">
+    <ng-template pTemplate="{{ templateType }}" let-event>
+        <span 
+            class="custom-marker p-shadow-2 item {{ event.selected ? 'item-selected' : '' }}" 
+            [style.backgroundColor]="event.color">
+            <i *ngIf="event.icon" [ngClass]="event.icon"></i><br>
+            {{ event.status || event}}<br>
+            <small class="p-text-secondary">{{event.date}}</small>
+        </span>
+    </ng-template>
+</p-timeline>

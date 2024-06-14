@@ -1,0 +1,139 @@
+<div [formGroup]="form">
+
+    <p-table #table
+      [value]="dataSource" 
+      [columns]="columns" 
+      [dataKey]="dataKey"
+
+      [selectionMode]="multipleSelection ? 'multiple' : 'single'"      
+      [responsive]="true"
+      styleClass="p-datatable-striped" 
+            
+      [paginator]=activatePaginator
+      [totalRecords]="page.totalElements"
+      [rowsPerPageOptions]="pageNavigation" 
+      [rows]="page.pageSize"
+      [showCurrentPageReport]=true
+      currentPageReportTemplate="Exibindo {first} a {last} de {totalRecords} registros"
+      
+      [lazy]="true" 
+      (onLazyLoad)="pagination($event)" 
+      (onRowSelect)="_onRowSelect($event.data)"
+      (onRowUnselect)="_onRowSelect($event.data)"
+      (selectAllChange)="_onSelectAll($event)"
+
+      (sortFunction)="sort($event)" 
+      [customSort]="true" 
+
+      [responsive]="true"
+      
+      [(selection)]="selectedItens"
+      
+      [contextMenu]="contextMenuItens.length > 0 ? cm : undefined"
+      (contextmenu)="onContextMenu($event)"
+      [(contextMenuSelection)]="selectedContextMenuItem">
+      
+        <!-- Header -->
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngIf="multipleSelection" style="width: 2.25em">
+              <p-tableHeaderCheckbox (click)="_onSelectAll($event)"></p-tableHeaderCheckbox>
+            </th>
+
+            <th *ngFor="let column of columns" [ngStyle]="{'width': column.width}" [pSortableColumn]="column.def">
+              
+              <div [ngClass]=" { 'd-flex': true, 'justify-content-center': column.align === 'center' }">
+                <!--
+                <p-sortIcon [field]="column.def"></p-sortIcon>
+                -->
+                {{column.title}}
+                <!-- <mat-icon [svgIcon]="column.iconName" class="icon-header" *ngIf="column.iconName"></mat-icon> -->
+              </div>
+              <div *ngIf="column.filter === 'text'">
+                <input [id]="column.def" type="text" pInputText (keypress)="searchText($event)" style="width: 80%"/>
+              </div>
+              <div *ngIf="column.filter === 'date'">
+                <!-- https://github.com/primefaces/primeng/issues/1426 -->
+                <p-calendar 
+                  view="date" 
+                  appendTo="body"
+                  icon="calendar" 
+                  dateFormat='dd/mm/yy' 
+                  placeholder="__/__/____"
+                  (onSelect)="searchDate($event, column.def)" 
+                  (onClearClick)="searchDate($event, column.def)" 
+                  [id]="column.def" 
+                  [showIcon]="true" 
+                  [readonlyInput]="true" 
+                  [keepInvalid]="true" 
+                  [class.calendar-show-only-icon]="false" clean 
+                  [showButtonBar]="true" 
+                  [selectOtherMonths]="true">
+              </p-calendar>
+
+              </div>
+              <div *ngIf="column.filter === 'dropdown'">
+                    <p-dropdown [showClear]="true" [id]="column.def" [formControlName]="column.def"  [options]="column.values" (onChange)="searchCombo($event, column.def)" placeholder="Selecione"
+                    [showClear]="true" optionLabel="label" optionValue="value" >
+                    </p-dropdown>
+
+              </div>
+            </th>
+            <th style="width:7em" *ngIf="actions"></th>
+          </tr>
+        </ng-template>
+
+        <!-- Body -->
+        <ng-template pTemplate="body" let-element let-columns="columns" let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="element" [pSelectableRowIndex]="rowIndex" [pContextMenuRow]="element">
+                <td *ngIf="multipleSelection">
+                  <p-tableCheckbox [value]="element"></p-tableCheckbox>
+                </td>
+                <td *ngFor="let column of columns">
+                  <div [ngClass]=" { 'd-flex': true, 'align-items-center': true,'justify-content-center': column.align === 'center' }">
+
+                    <span data-cy="select" *ngIf="!column.type; else showColumnWithType" [ngClass]="column.fnElementClass ? column.fnElementClass(element, element[column.def], column) : ''">
+                      {{ column.fnDataTransformation ? column.fnDataTransformation(element, element[column.def], column) : element[column.def] }}
+                    </span>
+
+                    <ng-template #showColumnWithType>
+                      <span *ngIf="column.type === 'currency'">{{ element[column.def] | currency }}</span>
+                    </ng-template>
+
+                    <mat-icon [svgIcon]="column.icon ? column.icon : 'details'" class="icon-btn-header icon-menu tooltip-icon" *ngIf="element[column.tootltipText]"
+                        [pTooltip]="element[column.tootltipText]" tooltipPosition="bottom"></mat-icon>
+                  </div>
+                </td>
+
+                <td class="column-buttons d-flex align-items-center" *ngIf="actions">
+
+                  <div *ngFor="let action of actions">
+                    <div  *ngIf="action.showAction ? action.showAction(element) : true">
+                      <p-button
+                        (click)="action.fn(element)" 
+                        class="p-button-rounded"
+                        [pTooltip]="action.hintText ? action.hintText : ''"
+                        [label]="action.textButton ? action.textButton : ''"
+                        [icon]="action.iconName ?  'pi pi-' + action.iconName : ''"
+                        [style]="{'margin-right': '3px'}">
+                      </p-button>
+                    </div>
+                    <div *ngIf="action.showAction ? !action.showAction(element) : false">
+                      <p-button  
+                        class="p-button-rounded" 
+                        [icon]="'pi pi-' + action.iconName"
+                        [style]="{'margin-right': '3px'}" 
+                        [disabled]="!action.showAction(element)">
+                      </p-button>
+                    </div>
+
+                  </div>
+
+                </td>
+            </tr>
+        </ng-template>
+      
+    </p-table>
+    <p-contextMenu #cm [model]="contextMenuItens"></p-contextMenu>
+
+<div>

@@ -1,0 +1,45 @@
+.badge{
+    border-radius: var(--border-radius);
+    padding: .25em .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+.badge {
+    &.status-primary {
+        background: #B3E5FC;
+        color: #23547B;
+    }
+    &.status-success {
+        background: #C8E6C9;
+        color: #256029;
+    }
+
+    &.status-error {
+        background: #FFCDD2;
+        color: #C63737;
+    }
+
+    &.status-s1 {
+        background: #FEEDAF;
+        color: #8A5340;
+    }
+
+
+    &.status-s2 {
+        background: #ECCFFF;
+        color: #694382;
+    }
+
+    &.status-s3 {
+        background: #FFD8B2;
+        color: #805B36;
+    }
+    
+    &.status-s4 {
+        background: #ffe17d;
+        color: #23547B;
+    }
+}

@@ -1,0 +1,33 @@
+@import 'theme.scss';
+
+::ng-deep .toast-body {
+  border-radius: 5px;
+  font-family: 'Roboto-bold';
+}
+::ng-deep .toast {
+  position: absolute;
+  z-index: 9999;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  min-height: 50px;
+  max-width: none;
+  padding: 5px;
+
+  &.bg-danger {
+    background-color:#f45c4e!important;
+    text-align: left;
+  }
+
+  &.bg-success {
+    background-color: #1ed0a5!important;
+    text-align: left;
+  }
+  &.bg-standard {
+    background-color: #fffd8a!important;
+    color: black;
+    text-align: left;
+  }
+  
+}
+

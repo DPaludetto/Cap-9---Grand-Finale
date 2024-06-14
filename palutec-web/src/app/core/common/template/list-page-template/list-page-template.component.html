@@ -1,0 +1,65 @@
+<app-page-template [pageTitle]="pageTitle" [titleStyle]="titleStyle">
+  
+  <div page-content [formGroup]="form">
+    <div class="row mt-20" >
+      <div class="flex flex-wrap gap-2">
+        <button pButton pRipple icon="pi pi-sync" (click)="loadData()" label=""></button>
+        <button pButton pRipple icon="pi pi-plus" (click)="navigateToCreate()" label="{{ createButtonName }}" *ngIf="showCreateButton"></button>
+        <button pButton pRipple icon="pi pi-file-export" (click)="exportData()" label="{{ exportButtonName }}" *ngIf="showExportData"></button>
+        <!--
+        <button pButton pRipple icon="pi pi-refresh" class="p-button-outlined" (click)="loadData()" label="Atualizar"></button>
+        -->
+      </div>
+    </div>
+
+    <div class="row" *ngIf="searchSingle">
+      <div class="col-4 d-flex align-items-start">
+        <input pInputText data-cy="search" #searchInput type="text" class="input-text" placeholder="Pesquisar" />
+        <p-button label="Pesquisar" icon="pi pi-search" styleClass="p-button-" (click)="search(searchInput.value)"></p-button>
+      </div>
+
+    </div>
+
+    <div class="row mt-20 ">
+      <div class="col d-flex align-items-start wrapper">
+        <ng-content select="[list-page-description]"></ng-content>
+      </div>
+    </div>
+
+    <div class="row mt-20">
+      <div class="col">
+
+        <app-data-table #dataTable
+          [form]="form"
+          [columns]="columns" 
+          [dataSource]="dataSource"
+          [actions]="actions"
+          [multipleSelection] = multipleSelection
+          [paginatorService]="paginationService"
+          [contextMenuItens]="contextMenuItens"
+          
+          (onRowSelect)="navigateToDetail($event)">
+    
+        </app-data-table>
+
+      </div>
+    </div>
+
+    <div class="row mt-20" >
+      <div class="flex flex-wrap gap-2">
+        <button pButton pRipple icon="pi pi-sync" (click)="loadData()" label=""></button>
+        <button pButton pRipple icon="pi pi-plus" (click)="navigateToCreate()" label="{{ createButtonName }}" *ngIf="showCreateButton"></button>
+        <button pButton pRipple icon="pi pi-file-export" (click)="exportData()" label="{{ exportButtonName }}" *ngIf="showExportData"></button>
+        <!--
+        <button pButton pRipple icon="pi pi-refresh" class="p-button-outlined" (click)="loadData()" label="Atualizar"></button>
+        -->
+      </div>
+    </div>
+    
+  </div>
+
+  <ng-template #confirmationModal let-modal>
+    <app-confirmation-modal [modal]="modal" [title]="'Excluir ' + pageTitle" [message]="deleteMessage" [icon]="'dump'">
+    </app-confirmation-modal>
+  </ng-template>
+</app-page-template>

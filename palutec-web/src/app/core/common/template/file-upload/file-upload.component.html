@@ -1,0 +1,14 @@
+<div page-content>
+  <p-fileUpload 
+    name="files[]" 
+    url="{{ urlService }}"
+    [multiple]="true"
+    chooseLabel="Selecionar Arquivos"
+    uploadLabel="Enviar"
+    cancelLabel="Cancelar"
+    invalidFileTypeMessageDetail="Tipos válidos são imagens e documentos PDF."
+    [accept]="accept"
+    [maxFileSize]="2000000"
+    (onUpload)="onUpload($event)">
+</p-fileUpload>
+</div>

@@ -1,0 +1,97 @@
+<form [formGroup]="form">
+<div class="">
+    <p-tabView orientation="left">
+        <p-tabPanel header="Contrato" class="line-height-3 m-0">
+            <div class="grid">
+                <div class="col-12">
+                    <h5>Informações do Contrato</h5>
+                    <div class="p-fluid p-formgrid grid">
+                        
+                        <div class="field col-2">
+                            <app-form-input [parentForm]="form" label="Empresa" name="empresa"></app-form-input>
+                        </div>
+                        <div class="field col-2">
+                            <app-form-input [parentForm]="form" label="Número" name="numeroContrato"></app-form-input>
+                        </div>
+                        <div class="field col-3">
+                            <app-form-input [parentForm]="form" label="Tipo de Contrato" name="denominacaoTipoContrato"></app-form-input>
+                        </div>
+                        <div class="field col-2">
+                            <app-form-input [parentForm]="form" label="Centro de Custo SAP" name="centroCustoSAP"></app-form-input>
+                        </div>
+                        <div class="field col-3 ">
+                            <app-form-input [parentForm]="form" label="Contrato Antigo" name="contratoAntigo"></app-form-input>
+                        </div>
+                        <div class="field col-2" style="display: flex; align-items: center;">
+                            <p class="toggle-inline" style="margin-right: 4px">Ativo</p>
+                            <p-inputSwitch formControlName="ativo"></p-inputSwitch>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <h5>Boletos</h5>
+                    <div class="row">
+                        
+                        <app-list-page-template 
+                        idName="id"
+                        crudUrl="contrato-despesa" 
+                        [searchSingle]="false" 
+                        [columns]="boletosColumns" 
+                        (selectItemEvent)="onBoletoRowSelected($event)"
+                        [showCreateButton]="false">
+                    
+                        </app-list-page-template>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" style="position: fixed; bottom: 50px;">
+                {{ obj.auditInfo }}.
+            </div>   
+        </p-tabPanel>
+        
+        <p-tabPanel header="Configuração de Despesas" class="line-height-3 m-0">
+            <div class="grid">
+                <div class="col-12">
+                    <div class="p-fluid p-formgrid grid">
+
+                        <app-data-table
+                        [columns]="despesasColumns" 
+                        [dataSource]="despesasDatasource"
+                        [multipleSelection] = false
+                       
+                        (onRowSelect)="onDespesaRowSelected($event)">
+                  
+                      </app-data-table>
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <p-divider layout="horizontal"></p-divider>
+                </div>                
+
+                <div class="col-12">
+                    <app-contrato-despesa-info [contratoDespesa]="despesa"></app-contrato-despesa-info>
+                </div>
+
+            </div>
+        </p-tabPanel>
+    </p-tabView>      
+
+  
+
+    <div class="bg-light flex gap-2" style="border: 1px solid rgb(228, 228, 228); position: fixed; bottom: 0; width: 100%;  right: 0; padding: 5px 5px 5px 5px; background-color: rgb(246, 249, 252);">
+        <div class="flex flex-wrap gap-2 text-right" style="right: 0; text-align: right">
+        <p-button label="Salvar" icon="pi pi-save" styleClass="p-button-"  (click)="save()"></p-button>
+        <p-button label="Cancelar" icon="pi pi-ban" styleClass="p-button-outlined" (click)="cancel()"></p-button>
+        </div>
+    </div>
+
+</div>    
+</form>
+
+

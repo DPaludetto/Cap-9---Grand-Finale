@@ -1,0 +1,98 @@
+<div class="">
+    <h5>{{ title }}</h5>
+    <div class="grid">
+        <div class="col-5 align-items-center justify-content-center">
+            <div class="row ">
+                {{ obj?.documentoOcrFileName }}
+            </div>
+            <div class="row">
+                <p-image src="{{ urlImage }}" alt="Boleto" width="500" [preview]="true"></p-image>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <p-divider layout="vertical"></p-divider>
+        </div>
+        <div class="col-6 align-items-end justify-content-end">
+            <form [formGroup]="form">
+
+                <h5>Cedente</h5>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-9">
+                        <app-form-input [parentForm]="form" label="Cedente" name="cedente"></app-form-input>
+                    </div>        
+                    <div class="field col-12 md:col-3">
+                        <app-form-input [parentForm]="form" label="CPF/CNPJ" name="cpfCnpjCedente"></app-form-input>
+                    </div>
+        
+                </div>
+                <h5>Sacado</h5>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-9">
+                        <app-form-input [parentForm]="form" label="Sacado" name="sacado"></app-form-input>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <app-form-input [parentForm]="form" label="CPF/CNPJ" name="cpfCnpjSacado" ></app-form-input>
+                    </div>
+                </div>    
+                <h5>Pagamento</h5>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-4">
+                        <app-form-input [parentForm]="form" label="Vencimento" name="vencimento" mode="date"></app-form-input>
+                    </div>
+                    <div class="field col-4">
+                        <app-form-input [parentForm]="form" label="Data do Doc." name="emissao" mode="date"></app-form-input>
+                    </div>
+                    <div class="field col-4">
+                        <app-form-input [parentForm]="form" label="Multa" name="multa" mode="decimal"></app-form-input>
+                    </div>
+                    <div class="field col-5">
+                        <app-form-input [parentForm]="form" label="Valor Total" name="valor" mode="decimal"></app-form-input>
+                    </div>
+        
+                </div>
+                <h5>Contrato e Despesa</h5>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12">
+                        <!-- <app-form-input label="Tipo de Despesa x Competência x Valor" addonIcon="pi-user" (addonAction)="doAction()"></app-form-input> -->
+                        <p-autoComplete 
+                            [suggestions]="filteredContratoDespesa" 
+                            (completeMethod)="filterContratoDespesa($event.query)" 
+                            field="label" 
+                            [dropdown]="true" 
+                            formControlName="contratoDespesaId"
+                            [(ngModel)]="selectedContratoDespesa"></p-autoComplete>
+                    </div>
+                    <!--
+                    <div class="field col-12 md:col-6">
+                        <app-form-input label="Empresa"></app-form-input>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <app-form-input label="Contrato RE"></app-form-input>
+                    </div>
+                    -->
+                </div>
+        
+        
+            </form>
+        
+        </div>
+    </div>
+
+    
+    <div class="bg-light flex gap-2 clearfix float-right" style="border: 1px solid rgb(228, 228, 228); position: fixed; bottom: 0; width: 100%;  right: 0; padding: 5px 5px 5px 5px; background-color: rgb(246, 249, 252);">
+        <div class="flex flex-wrap gap-2 clearfix float-right" style="right: 0; text-align: right">
+            <p-button label="Salvar" icon="pi pi-save" styleClass="p-button- float-right" (onClick)="save()"></p-button>
+            <p-button label="Download" icon="pi pi-download" styleClass="p-button-outlined float-right" (onClick)="download()"></p-button>
+            <p-button label="Cancelar" icon="pi pi-ban" styleClass="p-button-outlined float-right" (onClick)="close()"></p-button>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+<h5>Modal</h5>
+<p-dialog 
+  header="Header" 
+  [(visible)]="displayModal"
+  [modal]="true" 
+  [style]="{width: '50vw'}" 
+  [baseZIndex]="10000"
+    [draggable]="false" 
+    [resizable]="false">
+
+      Mensagem!!!
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template> 
+</p-dialog>

@@ -1,0 +1,20 @@
+<div class="wrapper">
+
+  <div class="container">
+    <app-toast class="d-flex justify-content-center"></app-toast>
+    
+    <div class="header-right" *ngIf="showHeader">
+      <ng-content select="[page-header-right]"></ng-content>
+    </div>
+
+    <div class="mb-20" *ngIf="pageTitle">
+      <h4>{{ pageTitle }}</h4>
+      <app-breadcrumb></app-breadcrumb>
+    </div>
+
+    <ng-content class="page-content" select="[page-content]"></ng-content>
+
+    <ng-content class="page-footer" select="[page-footer]"></ng-content>
+
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<app-page-template [pageTitle]="modeTitle">
+
+  <div page-content>
+    <form [formGroup]="parentForm">
+
+      <ng-content select="[crud-form-fields]"></ng-content>
+
+      <div class="row buttons-box">
+        <div class="col d-flex align-items-start align-items-center">
+          <button type="button" class="btn btn-primary"
+            *ngIf="isCreateMode" (click)="createItem()"
+            [disabled]="parentForm.invalid">Criar</button>
+
+          <button type="button" class="btn btn-primary"
+            *ngIf="isDetailMode" (click)="changeToEditMode()"><i class="button-edit-icon"></i>Editar</button>
+          <button type="button" class="btn btn-light mg-left"
+            *ngIf="isDetailMode" (click)="open(confirmationModal)"><i class="button-trash-icon"></i> Excluir</button>
+          <button type="button" class="btn btn-light mg-left"
+            *ngIf="isDetailMode" (click)="back()">Voltar</button>
+
+          <button type="button" class="btn btn-primary"
+            *ngIf="isEditMode" (click)="saveItem()"
+            [disabled]="parentForm.invalid" >Salvar Edições</button>
+          <button type="button" class="btn btn-light mg-left"
+            *ngIf="isEditMode || isCreateMode" (click)="cancel()">Cancelar</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <ng-template #confirmationModal let-modal>
+    <app-confirmation-modal [modal]="modal" [title]="'Excluir ' + pageTitle" [message]="deleteMessage" [icon]="'dump'">
+    </app-confirmation-modal>
+  </ng-template>
+</app-page-template>
