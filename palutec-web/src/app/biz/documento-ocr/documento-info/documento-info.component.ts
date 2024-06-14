@@ -21,9 +21,6 @@ export class DocumentoOcrInfoComponent implements OnInit, ICrudViewComponent{
   @Input() id?: string;
   obj!: Product;
 
-  //logColumns: any[] = [];
-  //logSource: any[] = [];
-
   @Input() documentoId?: string;
 
   constructor(
@@ -33,19 +30,12 @@ export class DocumentoOcrInfoComponent implements OnInit, ICrudViewComponent{
       private formBuilder: RxFormBuilder, ){
 
     this.id = ref.data?.item?.id;
-    this.obj = new Product(); 
+    this.obj = ref.data?.item || new Product(); 
     this.form = this.formBuilder.formGroup(this.obj);
   }
 
   ngOnInit(): void {
-    this.loadLog();
-  }
-
-  loadLog(){
-    this.documentoId = this.ref.data.item.id;
-    this.documentoService.getById(this.documentoId).subscribe(e =>{
-      this.obj = e;
-    });
+   // this.loadLog();
   }
 
   openItem(item: any): void {
