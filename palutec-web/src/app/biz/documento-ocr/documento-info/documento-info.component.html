@@ -1,11 +1,30 @@
-<p-tabView>
-    <p-tabPanel header="Log de Processamento" [selected]="true">
-        <!-- <app-timeline [events]="events"></app-timeline> -->
-        <app-data-table
-            [columns]="logColumns" 
-            [dataSource]="logSource"
-            [multipleSelection] = false>
-        </app-data-table>
-    </p-tabPanel>
+<form [formGroup]="form">
+    <div class="grid">
+        <div class="col-12">
+            <h5>Informações do Contrato</h5>
+            <div class="p-fluid p-formgrid grid">
+                
+                <div class="field col-2">
+                    <app-form-input [parentForm]="form" label="Nome" name="name"></app-form-input>
+                </div>
+                <div class="field col-2">
+                    <app-form-input [parentForm]="form" label="Marca" name="brand"></app-form-input>
+                </div>
+                <div class="field col-3">
+                    <app-form-input [parentForm]="form" label="Tipo" name="type"></app-form-input>
+                </div>
+                <div class="field col-2">
+                    <app-form-input [parentForm]="form" label="Descrição" name="description"></app-form-input>
+                </div>
+                <div class="field col-3 ">
+                    <app-form-input [parentForm]="form" label="Preço" name="price"></app-form-input>
+                </div>
+                <div class="field col-2" style="display: flex; align-items: center;">
+                    <p class="toggle-inline" style="margin-right: 4px">Ativo</p>
+                    <p-inputSwitch formControlName="ativo"></p-inputSwitch>
+                </div>
 
-</p-tabView>
+            </div>
+        </div>
+    </div>
+</form>

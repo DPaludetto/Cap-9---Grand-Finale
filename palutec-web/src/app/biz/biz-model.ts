@@ -24,6 +24,19 @@ export abstract class AbstractAppObject{
         Alterado em: ${DateUtils.dateToStringFullFormatPresentation(this.updatedAt)}`;
     }
 }
+
+export class Product extends  AbstractAppObject{
+    
+    @prop() name?: string;
+    @prop() type?: string;
+    @prop() description?: string;
+    @prop() brand?: string;
+    @prop() price?: string;
+    @prop() stockQuantity?: string;
+
+}
+
+
 export class Contrato extends AbstractAppObject{
     @prop() ativo?: boolean;
     @prop() numeroContrato?: string;

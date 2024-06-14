@@ -43,7 +43,7 @@ export class ContratoInfoComponent implements OnInit{
       
       private contratoDespesaService: ContratoDespesaCrudService){
   
-    this.id = ref.data?.item.id;
+    this.id = ref.data?.item?.id;
     this.obj = new Contrato(); 
     this.form = this.formBuilder.formGroup(this.obj);
 

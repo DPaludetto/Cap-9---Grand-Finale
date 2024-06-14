@@ -1,9 +1,10 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
-import { PrimeIcons } from 'primeng/api';
-import { StatusDocumentoOcr } from '../../biz-model';
 import { DocumentoOcrCrudService } from '../documento-ocr.service';
 import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { ICrudViewComponent, OpenMode } from '@src/app/core/service/crud/crud.service.obj';
+import { FormGroup } from '@angular/forms';
+import { RxFormBuilder } from '@rxweb/reactive-form-validators';
+import { Product } from '../../biz-model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,35 +17,34 @@ export class DocumentoOcrInfoComponent implements OnInit, ICrudViewComponent{
 
   events: any[] = [];
 
-  logColumns: any[] = [];
-  logSource: any[] = [];
+  @Input() form!: FormGroup;
+  @Input() id?: string;
+  obj!: Product;
+
+  //logColumns: any[] = [];
+  //logSource: any[] = [];
 
   @Input() documentoId?: string;
 
-  constructor(private documentoService: DocumentoOcrCrudService, private ref: DynamicDialogConfig, private modal: DialogService){
+  constructor(
+      private documentoService: DocumentoOcrCrudService, 
+      private ref: DynamicDialogConfig, 
+      private modal: DialogService,
+      private formBuilder: RxFormBuilder, ){
 
-    this.logColumns = [
-      { title: 'Data', def: 'updatedAt', width: '15%', },
-      { title: 'Status', def: 'status', width: '30%',fnElementClass: this.statusClass.bind(this), fnDataTransformation: this.statusLabelTransform.bind(this)},
-      { title: 'Observação', def: 'note', width: '*', },
-    ];
+    this.id = ref.data?.item?.id;
+    this.obj = new Product(); 
+    this.form = this.formBuilder.formGroup(this.obj);
   }
 
   ngOnInit(): void {
     this.loadLog();
   }
 
-  statusClass(e: any): string{
-    return StatusDocumentoOcr.fromName(e.status)?.cssClass;
-  }
-  statusLabelTransform(e: any){
-    return StatusDocumentoOcr.fromName(e.status)?.description;
-  }
-
   loadLog(){
     this.documentoId = this.ref.data.item.id;
-    this.documentoService.loadProcessLog(this.documentoId).subscribe(e =>{
-      this.logSource = e;
+    this.documentoService.getById(this.documentoId).subscribe(e =>{
+      this.obj = e;
     });
   }
 

@@ -26,27 +26,21 @@ export class DocumentoOcrListComponent extends AbstractCrudList<DocumentoOcr, Do
     super(service, viewer);
 
     this.columns = [
-      { title: 'Nome do Arquivo', def: 'fileName', width: '*',  },
-      { title: 'Tipo', def: 'tipoDocumento', width: '5%',  },
-      { title: 'Dt. Upload', def: 'createdAt', width: '15%',},
-      { title: 'Dt. Ultimo Processamento', def: 'updatedAt', width: '15%',},
-      { title: 'Tamanho', def: 'fileSizeReadble', width: '100px'},
-      { title: 'Status', def: 'status', width: '200px', fnElementClass: this.statusClass.bind(this), fnDataTransformation: this.statusLabelTransform.bind(this)},
-      { title: 'Observação', def: 'note', width: '25%', },
+      { title: 'Produto', def: 'name', width: '*',  },
+      { title: 'Marca', def: 'brand', width: '5%',  },
+      { title: 'Tipo', def: 'type', width: '5%',  },
+      { title: 'Descrição', def: 'description', width: '5%',  },
+      { title: 'Preço', def: 'price', width: '100px'},
+      { title: 'Qtd.', def: 'stockQuantity', width: '100px'},
+      { title: 'Dt. Cadastro', def: 'createdAt', width: '100px',},
+      { title: 'Dt. Alteração', def: 'updatedAt', width: '100px',},
     ];
 
-
+    
 
     this.contextMenuItens = [
       {label: 'Abrir', icon: 'pi pi-fw pi-file-edit', command: this.openToEdit.bind(this)},
       {label: 'Remover', icon: 'pi pi-fw pi-trash', command: this.deleteDocument.bind(this)},
-      {separator: true},
-      {label: 'Reprocessar', icon: 'pi pi-fw pi-refresh', command: this.reprocessDocument.bind(this)},
-      {label: 'Download', icon: 'pi pi-fw pi-download', command: this.downloadDocument.bind(this)},
-      {label: 'Rotear', icon: 'pi pi-fw pi-arrow-down-right', items: [
-          {label: 'Fila de Boletos', icon: 'pi pi-fw pi-bars', command: this.forwardBoleto.bind(this)}
-        ]
-      },
     ];
   }
 
@@ -72,14 +66,5 @@ export class DocumentoOcrListComponent extends AbstractCrudList<DocumentoOcr, Do
   }
   
   
-  override openToCreate(item: any, additional?: any): void {
-    this.openUpload(item);
-  }
-  
-
-  private openUpload(event: any): void {
-    this.upload.open('Adicionar Documento', `${environment.apiUrl}/v1/file-upload/OCR`);
-  }
-
 
 }

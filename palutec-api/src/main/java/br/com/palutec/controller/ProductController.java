@@ -9,7 +9,7 @@ import br.com.palutec.service.ProductService;
 import br.com.squada.core.service.AbstractCrudController;
 
 @RestController
-@RequestMapping(path = "/v1/product")
+@RequestMapping(path = "/v1/products")
 public class ProductController extends AbstractCrudController<ProductDTO, Product, ProductService>{
 
 	

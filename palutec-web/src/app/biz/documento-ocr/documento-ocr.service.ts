@@ -18,7 +18,7 @@ export class DocumentoOcrCrudService extends AbstractCrudService<DocumentoOcr>{
 
 
     constructor( private fileRepository: FileRepositoryService){
-        super('documento-ocr');
+        super('products');
     }
 
     reprocessDocument(id: string){
