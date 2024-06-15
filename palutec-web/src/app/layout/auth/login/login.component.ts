@@ -45,7 +45,7 @@ export class Login0Component {
         // if (this.loginForm.valid) {
         this.auth.login(this.user, this.password)
             .then(() => {
-              this.router.navigateByUrl('/biz/documento-ocr-list');
+              this.router.navigateByUrl('/biz/cadastro-list');
             })
             .catch((error) => {
                 this.errorMessage = 'Usuário ou senha incorretos.';

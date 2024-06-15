@@ -1,6 +1,6 @@
 
 import { Injectable } from "@angular/core";
-import { DocumentoOcr } from "../biz-model";
+import { Produto } from "../biz-model";
 import { AbstractCrudService } from "@src/app/core/service/crud/crud-impl.component";
 import { HttpHeaders, HttpResponse } from "@angular/common/http";
 import * as FileSaver from "file-saver";
@@ -12,7 +12,7 @@ import { IResponsePageableList } from "@src/app/core/service/crud/pagination";
 @Injectable({
     providedIn: 'root',
 })
-export class DocumentoOcrCrudService extends AbstractCrudService<DocumentoOcr>{
+export class ProdutoCrudService extends AbstractCrudService<Produto>{
 
 
 
@@ -22,7 +22,7 @@ export class DocumentoOcrCrudService extends AbstractCrudService<DocumentoOcr>{
     }
 
     reprocessDocument(id: string){
-        this.http.put<DocumentoOcr>(this.serviceUrl+'/reprocess/'+id, id, this.httpOptions)
+        this.http.put<Produto>(this.serviceUrl+'/reprocess/'+id, id, this.httpOptions)
             .subscribe();
     }
 
@@ -31,7 +31,7 @@ export class DocumentoOcrCrudService extends AbstractCrudService<DocumentoOcr>{
     }
 
     setDocumentType(id: any, type: string) {
-        this.http.put<DocumentoOcr>(`${this.serviceUrl}/set-type/${type}/${id}`, id, this.httpOptions)
+        this.http.put<Produto>(`${this.serviceUrl}/set-type/${type}/${id}`, id, this.httpOptions)
             .subscribe();
     }
 

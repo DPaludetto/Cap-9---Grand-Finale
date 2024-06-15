@@ -1,5 +1,5 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
-import { DocumentoOcrCrudService } from '../documento-ocr.service';
+import { ProdutoCrudService } from '../produto.service';
 import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { ICrudViewComponent, OpenMode } from '@src/app/core/service/crud/crud.service.obj';
 import { FormGroup } from '@angular/forms';
@@ -10,10 +10,10 @@ import { Product } from '../../biz-model';
   providedIn: 'root',
 })
 @Component({
-  selector: 'app-documento-info',
-  templateUrl: './documento-info.component.html',
+  selector: 'app-produto-info',
+  templateUrl: './produto-info.component.html',
 })
-export class DocumentoOcrInfoComponent implements OnInit, ICrudViewComponent{
+export class ProdutoInfoComponent implements OnInit, ICrudViewComponent{
 
   events: any[] = [];
 
@@ -24,7 +24,7 @@ export class DocumentoOcrInfoComponent implements OnInit, ICrudViewComponent{
   @Input() documentoId?: string;
 
   constructor(
-      private documentoService: DocumentoOcrCrudService, 
+      private documentoService: ProdutoCrudService, 
       private ref: DynamicDialogConfig, 
       private modal: DialogService,
       private formBuilder: RxFormBuilder, ){
@@ -39,7 +39,7 @@ export class DocumentoOcrInfoComponent implements OnInit, ICrudViewComponent{
   }
 
   openItem(item: any): void {
-    this.modal.open(DocumentoOcrInfoComponent, {
+    this.modal.open(ProdutoInfoComponent, {
       header: 'Adicionar',
       width: '50%',
       height: '50%',

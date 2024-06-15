@@ -168,11 +168,13 @@ export class Pessoa extends AbstractAppObject{
     cpfCnpj?: string;
 }
 
-export class DocumentoOcr extends AbstractAppObject{
-    nomeArquivo?: string;
-    status?: string;
-    tipoDocumento?: string;
-    origem?: string;   
+export class Produto extends AbstractAppObject{
+    @prop() name?: string;
+    @prop() type?: string;
+    @prop() description?: string;
+    @prop() brand?: string;
+    @prop() price?: string;
+    @prop() stockQuantity?: string;
 }
 
 export class StatusDocumentoOcr {

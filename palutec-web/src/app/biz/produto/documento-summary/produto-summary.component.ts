@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { PrimeIcons } from 'primeng/api';
 
 @Component({
-  selector: 'app-documento-summary',
-  templateUrl: './documento-summary.component.html',
+  selector: 'app-produto-summary',
+  templateUrl: './produto-summary.component.html',
 })
-export class DocumentoSummaryComponent {
+export class ProdutoSummaryComponent {
 
   events: any[] = [];
 

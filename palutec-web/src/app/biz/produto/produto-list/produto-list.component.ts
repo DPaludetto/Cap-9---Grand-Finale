@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
 import { AbstractCrudList } from '@src/app/core/service/crud/crud-impl.component';
-import { DocumentoOcr, StatusDocumentoOcr } from '../../biz-model';
+import { Produto as Produto, StatusDocumentoOcr } from '../../biz-model';
 import { DialogService } from 'primeng/dynamicdialog';
-import { DocumentoOcrCrudService } from '../documento-ocr.service';
-import { DocumentoOcrInfoComponent } from '../documento-info/documento-info.component';
-import { FileUploadComponent } from '@src/app/core/common/template/file-upload/file-upload.component';
+import { ProdutoInfoComponent as ProdutoInfoComponent } from '../produto-info/produto-info.component';
 import { environment } from 'src/environments/environment';
 import { isNgTemplate } from '@angular/compiler';
 import { MenuItem } from 'primeng/api';
+import { ProdutoCrudService } from '../produto.service';
 
 @Component({
-  selector: 'app-documento-list',
-  templateUrl: './documento-list.component.html',
+  selector: 'app-produto-list',
+  templateUrl: './produto-list.component.html',
   providers: [DialogService]
 })
-export class DocumentoOcrListComponent extends AbstractCrudList<DocumentoOcr, DocumentoOcrInfoComponent, DocumentoOcrCrudService>{
+export class ProdutoListComponent extends AbstractCrudList<Produto, ProdutoInfoComponent, ProdutoCrudService>{
 
   columns: any[] = [];
   
@@ -22,7 +21,7 @@ export class DocumentoOcrListComponent extends AbstractCrudList<DocumentoOcr, Do
 
   contextMenuItens: MenuItem[] = [];
 
-  constructor(private modal: DialogService, service: DocumentoOcrCrudService, private upload: FileUploadComponent, private viewer: DocumentoOcrInfoComponent) {
+  constructor(private modal: DialogService, service: ProdutoCrudService, private viewer: ProdutoInfoComponent) {
     super(service, viewer);
 
     this.columns = [
@@ -44,12 +43,6 @@ export class DocumentoOcrListComponent extends AbstractCrudList<DocumentoOcr, Do
     ];
   }
 
-  statusClass(e: any): string{
-    return StatusDocumentoOcr.fromName(e.status)?.cssClass;
-  }
-  statusLabelTransform(e: any){
-    return StatusDocumentoOcr.fromName(e.status)?.description;
-  }
   forwardBoleto(e: any){
     this.service.setDocumentType(e.item.element.id, 'BOLETO');
   }

@@ -54,7 +54,6 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TimelineComponent } from './timeline/timeline.component';
 import { FileUploadModule } from "primeng/fileupload";
-import { FileUploadComponent } from "./file-upload/file-upload.component";
 import { ImageModule } from "primeng/image";
 import { PanelModule } from "primeng/panel";
 import { DividerModule } from "primeng/divider";
@@ -90,7 +89,6 @@ import { MenuModule } from "primeng/menu";
     FormInputComponent,
     ListPageTemplateComponent,
     TimelineComponent,
-    FileUploadComponent,
     
     
     
@@ -203,7 +201,6 @@ import { MenuModule } from "primeng/menu";
     TimelineModule,
     DynamicDialogModule,
     FileUploadModule,
-    FileUploadComponent,
     ImageModule,
     PanelModule,
     DividerModule,
