@@ -1,6 +1,6 @@
 package br.com.palutec.model;
 
-import br.com.squada.core.service.AbstractBeanModel;
+import br.com.palutec.core.service.AbstractBeanModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

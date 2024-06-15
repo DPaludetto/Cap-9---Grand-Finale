@@ -4,7 +4,7 @@ import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { ICrudViewComponent, OpenMode } from '@src/app/core/service/crud/crud.service.obj';
 import { FormGroup } from '@angular/forms';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
-import { Product } from '../../biz-model';
+import { Produto } from '../../biz-model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class ProdutoInfoComponent implements OnInit, ICrudViewComponent{
 
   @Input() form!: FormGroup;
   @Input() id?: string;
-  obj!: Product;
+  obj!: Produto;
 
   @Input() documentoId?: string;
 
@@ -30,7 +30,7 @@ export class ProdutoInfoComponent implements OnInit, ICrudViewComponent{
       private formBuilder: RxFormBuilder, ){
 
     this.id = ref.data?.item?.id;
-    this.obj = ref.data?.item || new Product(); 
+    this.obj = ref.data?.item || new Produto(); 
     this.form = this.formBuilder.formGroup(this.obj);
   }
 

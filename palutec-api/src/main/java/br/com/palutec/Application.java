@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication(scanBasePackages = { "br.com.palutec", "br.com.squada"})
+@SpringBootApplication(scanBasePackages = { "br.com.palutec",})
 @EnableJpaRepositories(basePackages = { "br.com.palutec" })
 @EntityScan(basePackages = { "br.com.palutec"	 })
 @EnableScheduling

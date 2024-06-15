@@ -2,13 +2,13 @@ package br.com.palutec.service;
 
 import org.springframework.stereotype.Service;
 
+import br.com.palutec.core.exception.BusinessException;
+import br.com.palutec.core.service.AbstractCrudService;
+import br.com.palutec.core.util.UtilString;
 import br.com.palutec.dto.SystemUserDTO;
 import br.com.palutec.model.SystemUser;
 import br.com.palutec.model.SystemUser.UserStatus;
 import br.com.palutec.model.repository.SystemUserRepository;
-import br.com.squada.core.exception.BusinessException;
-import br.com.squada.core.service.AbstractCrudService;
-import br.com.squada.core.util.UtilString;
 
 @Service
 public class SystemUserService extends AbstractCrudService<SystemUserDTO, SystemUser, SystemUserRepository> {

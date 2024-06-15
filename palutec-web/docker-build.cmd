@@ -1,6 +1,6 @@
 @echo off
 
-SET application=financeiro-pagadoria-web
+SET application=palutec-web
 SET tagname=%1
 
 ECHO #=============================================================#

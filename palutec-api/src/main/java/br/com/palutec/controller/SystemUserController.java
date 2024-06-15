@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.palutec.core.service.AbstractCrudController;
+import br.com.palutec.core.service.PageDTO;
 import br.com.palutec.dto.SystemUserDTO;
 import br.com.palutec.model.SystemUser;
 import br.com.palutec.service.SystemUserService;
-import br.com.squada.core.service.AbstractCrudController;
-import br.com.squada.core.service.PageDTO;
 
 @RestController
 @RequestMapping(path = "/v1/user")

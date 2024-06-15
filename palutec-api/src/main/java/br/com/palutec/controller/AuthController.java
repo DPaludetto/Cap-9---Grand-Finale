@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.palutec.core.util.UtilCollection;
 import br.com.palutec.model.SystemUser;
 import br.com.palutec.service.SystemUserService;
-import br.com.squada.core.util.UtilCollection;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.xml.bind.DatatypeConverter;

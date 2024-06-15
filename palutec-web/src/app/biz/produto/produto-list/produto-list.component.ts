@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractCrudList } from '@src/app/core/service/crud/crud-impl.component';
-import { Produto as Produto, StatusDocumentoOcr } from '../../biz-model';
+import { Produto } from '../../biz-model';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ProdutoInfoComponent as ProdutoInfoComponent } from '../produto-info/produto-info.component';
 import { environment } from 'src/environments/environment';

@@ -1,6 +1,6 @@
 package br.com.palutec.dto;
 
-import br.com.squada.core.service.AbstractDTOModel;
+import br.com.palutec.core.service.AbstractDTOModel;
 import lombok.Getter;
 import lombok.Setter;
 
