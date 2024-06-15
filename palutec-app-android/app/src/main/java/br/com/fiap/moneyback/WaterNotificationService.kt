@@ -1,4 +1,4 @@
-package br.com.fiap.estoque
+package br.com.fiap.moneyback
 
 import android.app.NotificationManager
 import android.content.Context
@@ -6,7 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.annotation.DrawableRes
 import androidx.core.app.NotificationCompat
-import br.com.fiap.estoque.R
+import br.com.fiap.moneyback.R
 import kotlin.random.Random
 
 class WaterNotificationService(

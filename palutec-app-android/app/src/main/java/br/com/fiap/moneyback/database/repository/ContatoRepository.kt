@@ -1,8 +1,8 @@
-package br.com.fiap.estoque.database.repository
+package br.com.fiap.moneyback.database.repository
 
 import android.content.Context
-import br.com.fiap.estoque.database.dao.ContatoDb
-import br.com.fiap.estoque.model.Produto
+import br.com.fiap.moneyback.database.dao.ContatoDb
+import br.com.fiap.moneyback.model.Produto
 //import br.com.fiap.moneyback.model.Tbl_aluno
 
 class ContatoRepository(context: Context) {

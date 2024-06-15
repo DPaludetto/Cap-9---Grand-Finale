@@ -1,10 +1,10 @@
-package br.com.fiap.estoque.database.dao
+package br.com.fiap.moneyback.database.dao
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import br.com.fiap.estoque.model.Produto
+import br.com.fiap.moneyback.model.Produto
 //import br.com.fiap.moneyback.model.Tbl_aluno
 
 

@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalPermissionsApi::class)
 
-package br.com.fiap.estoque
+package br.com.fiap.moneyback
 
 import android.Manifest
 import android.os.Build
@@ -18,19 +18,21 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 //import br.com.fiap.moneyback.screens.CadastroAlunos
 //import br.com.fiap.moneyback.screens.Produto
-import br.com.fiap.estoque.screens.LoginScreen
-import br.com.fiap.estoque.screens.MenuScreen
+import br.com.fiap.moneyback.screens.LoginScreen
+import br.com.fiap.moneyback.screens.MenuScreen
 //import br.com.fiap.moneyback.screens.PesquisaAlunos
 //import br.com.fiap.moneyback.screens.PesquisaMentores
 //import br.com.fiap.moneyback.screens.RelAlunoMentor
 //import br.com.fiap.moneyback.screens.RelMentorAluno
-import br.com.fiap.estoque.ui.theme.MoneyBackTheme
+import br.com.fiap.moneyback.ui.theme.MoneyBackTheme
 //import br.com.fiap.moneyback.ui.theme.WaterNotificationService
 
 //import android.Manifest
 //import android.os.Bundle
 //import androidx.activity.ComponentActivity
-import br.com.fiap.estoque.screens.CadastroProdutos
+import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
+import br.com.fiap.moneyback.screens.CadastroProdutos
 
 //import com.ad_coding.notificationscourse.ui.theme.NotificationsCourseTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi

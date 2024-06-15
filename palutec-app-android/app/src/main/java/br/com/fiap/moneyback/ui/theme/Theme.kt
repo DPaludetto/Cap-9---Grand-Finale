@@ -1,4 +1,4 @@
-package br.com.fiap.estoque.ui.theme
+package br.com.fiap.moneyback.ui.theme
 
 import android.app.Activity
 import android.os.Build

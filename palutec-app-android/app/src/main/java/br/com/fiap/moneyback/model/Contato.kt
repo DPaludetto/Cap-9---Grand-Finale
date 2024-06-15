@@ -1,18 +1,17 @@
-package br.com.fiap.estoque.model
+package br.com.fiap.moneyback.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-
+@Entity(tableName = "tb_produto")
 data class Produto (
-    var name: String,
-    var brand: String,
-    var type: String,
-    var description: String,
-    var price: Double,
-    var stockQuantity: Integer
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
+    var nome: String = "",
+    var quantidade: String = "",
+    var preco: String = "",
+    @ColumnInfo(name = "produto_novo") var produtonovo: Boolean = false
 )
 
 /*

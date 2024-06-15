@@ -1,4 +1,4 @@
-package br.com.fiap.estoque
+package br.com.fiap.moneyback
 
 import android.app.Application
 import android.app.NotificationChannel

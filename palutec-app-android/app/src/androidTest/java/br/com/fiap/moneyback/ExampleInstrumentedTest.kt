@@ -1,4 +1,4 @@
-package br.com.fiap.estoque
+package br.com.fiap.moneyback
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
